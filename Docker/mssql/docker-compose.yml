@@ -1,0 +1,12 @@
+version: "3.2"
+services:
+  sql-server:
+    container_name: sql-server-db
+    image: mcr.microsoft.com/mssql/server:2017-latest
+    ports:
+        #PortaHost:PortaContainer
+      - "1434:1433"
+    environment:
+      - ACCEPT_EULA=Y
+      - SA_PASSWORD=Toor!12345
+      - TZ=America/Sao_Paulo
