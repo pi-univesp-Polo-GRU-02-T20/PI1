@@ -1,8 +1,0 @@
--- -----------------------------------------------------
--- TABLE `DB_COMERCIO`.`TIPO_PAGAMENTO`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `DB_COMERCIO`.`TIPO_PAGAMENTO` (
-  `COD_TIPO_PAGAMENTO` 	INT(11) 			NOT NULL AUTO_INCREMENT,
-  `DSC_TIPO_PAGAMENTO` 	VARCHAR(90) 		NULL DEFAULT NULL,
-  PRIMARY KEY PK_TIPO_PAGAMENTO(`COD_TIPO_PAGAMENTO`))
-;

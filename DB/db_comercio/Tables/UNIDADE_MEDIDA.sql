@@ -1,8 +1,0 @@
--- -----------------------------------------------------
--- TABLE `DB_COMERCIO`.`UNIDADE_MEDIDA`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `DB_COMERCIO`.`UNIDADE_MEDIDA` (
-  `COD_UNIDADE_MEDIDA` 	INT(11) 			NOT NULL AUTO_INCREMENT,
-  `NME_UNIDADE_MEDIDA` 	VARCHAR(100) 		NULL DEFAULT NULL,
-  PRIMARY KEY PK_UNIDADE_MEDIDA(`COD_UNIDADE_MEDIDA`))
-;
