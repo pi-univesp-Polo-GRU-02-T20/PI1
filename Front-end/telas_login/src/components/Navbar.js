@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Button } from './Button';
 import { Link } from 'react-router-dom';
 import './Navbar.css';
-import Dropdown1 from './Dropdown';
+import Dropdown1 from './Dropdown1';
 import Dropdown2 from './Dropdown2';
 import Dropdown3 from './Dropdown3';
 
@@ -63,7 +63,7 @@ function Navbar() {
     <>
       <nav className='navbar'>
         <Link to='/' className='navbar-logo' onClick={closeMobileMenu}>
-          Glitter Bijoux
+          Nome da Empresa
           <i class='fas fa-at' />
         </Link>
         <div className='menu-icon' onClick={handleClick}>
