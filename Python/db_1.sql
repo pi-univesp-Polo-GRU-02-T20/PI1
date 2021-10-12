@@ -1,0 +1,1 @@
+SELECT * FROM pi1.app_cliente;
