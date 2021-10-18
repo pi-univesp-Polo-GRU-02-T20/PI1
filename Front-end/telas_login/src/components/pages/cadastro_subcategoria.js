@@ -28,7 +28,7 @@ export default function Cadastro_subcategoria() {
       <form onSubmit={onSubmit}>
 
         <div className="formulario">
-          <h1>Cadastrar SubCategoria </h1>
+          <h1>Cadastrar Subcategoria </h1>
           <br></br>
         </div>
 

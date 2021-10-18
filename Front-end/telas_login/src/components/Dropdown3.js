@@ -5,22 +5,22 @@ import { Link } from 'react-router-dom';
 const MenuItems = [
   {
     title: 'Compra',
-    path: '/marketing',
+    path: '/movimentacao-compra',
     cName: 'dropdown-link'
   },
   {
     title: 'Venda',
-    path: '/consulting',
+    path: '/movimentacao-venda',
     cName: 'dropdown-link'
   },
   {
     title: 'Recebimento',
-    path: '/design',
+    path: '/movimentacao-recebimento',
     cName: 'dropdown-link'
   },
   {
     title: 'Pagamento',
-    path: '/development',
+    path: '/movimentacao-pagamento',
     cName: 'dropdown-link'
   }
 ];
