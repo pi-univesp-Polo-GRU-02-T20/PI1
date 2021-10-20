@@ -75,8 +75,8 @@ DATABASES = {
         'NAME': 'db_comercio',
         'HOST': 'localhost',
         'USER': 'root',
-        'PASSWORD': 'root',
-        'PORT': '3310',
+        'PASSWORD': '',
+        'PORT': '3306',
         'OPTIONS': { 'init_command': 'SET default_storage_engine=InnoDB',}
     }
 }
