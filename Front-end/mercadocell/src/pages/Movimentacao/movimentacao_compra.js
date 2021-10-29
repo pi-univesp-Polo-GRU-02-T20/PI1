@@ -23,16 +23,7 @@ class App extends Component{
     return(
 
         <div>
-          <h1>Listar os Filmes</h1>
-          {artigos.map(artigo => (
-              <h2>
-                <strong>Título: </strong>
-                {artigo.show.codCategoria}
-              </h2>
-              <p>
-                {artigo.show.nomeCategoria}
-              </p>
-          ))}
+
         </div>
       );
     };
