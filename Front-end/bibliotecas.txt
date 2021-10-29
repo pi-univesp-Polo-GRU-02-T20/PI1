@@ -1,4 +1,0 @@
-Bibliotecas 
-
-'react-icons'
-Comando: npm install react-icons --save
