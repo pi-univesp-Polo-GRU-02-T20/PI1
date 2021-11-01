@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 const MenuItems = [
   {
     title: 'Categoria',
-    path: '/marketing',
+    path: '/consulta-categoria',
     cName: 'dropdown-link'
   },
   {
@@ -25,7 +25,7 @@ const MenuItems = [
   },
   {
     title: 'Cliente',
-    path: '/development',
+    path: '/consulta-cliente',
     cName: 'dropdown-link'
   },
   {

@@ -13,7 +13,7 @@ export default function Home() {
   
   <div className="fundo_pagina">
   <div>
-      <h1>Página Principal</h1>
+      <h1>Bem-vindo</h1>
   </div>
   </div>
   </>

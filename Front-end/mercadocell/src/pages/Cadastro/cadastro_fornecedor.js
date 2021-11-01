@@ -1,107 +1,216 @@
-import React, { useState } from 'react';
-import '../../App.css';
+import React from 'react';
 import Navbar from '../../components/Menu/Navbar';
+import { useForm } from "react-hook-form";
+import { ErrorMessage } from '@hookform/error-message';
+import '../../cliente.css';
+import axios from 'axios';
 
-const initialValue = {
-  codigodacategoria: '',
-  nomedacategoria: ''
-}
+export default function Cadastro_categoria() {
 
-export default function Cadastro_fornecedor() {
-  const  [values, setValues] = useState(initialValue);
- 
-  function onChange(ev) {
-    const { name, value } = ev.target;
-  
-    setValues({ ...values, [name]: value });
-  }
-
-  function onSubmit(ev) {
-    ev.preventDefault();
-    alert("Categoria cadastrada.");
-
+  const { register, handleSubmit, formState: { errors } } = useForm();
+  const onSubmit = (data) => { 
+    console.log(data);
+    axios.post("http://localhost:8080/cliente");
   }
 
   return (
+  <>
+  <Navbar />
+  
   <div className="fundo_pagina">
   <div className="fundo_formulario">
 
-      <form onSubmit={onSubmit}>
+    <form onSubmit = { handleSubmit(onSubmit) } >
 
-        <div className="formulario">
-          <h1>Cadastrar Fornecedor</h1>
-          <br></br>
-        </div>
+    <div className="titulo">
+    <h1>Cadastrar Fornecedor</h1>
+    </div>
 
+    <div className="campoduplo">
+        <div className="camposimples">
 
-        <div className="formulario2">
-        <div className="formulario">
-          <label htmlfor="codigodacategoria"> Nome </label>
-          <input id="codigodacategoria" name="codigodacategoria" type="text" onChange={onChange} />
-        </div>
-
-        <div className="formulario">
-          <label htmlfor="nomedacategoria"> CPF </label>
-          <input id="nomedacategoria" name="nomedacategoria" type="text" onChange={onChange} />
-        </div>
-        </div>
-
-        <div className="formulario2">
-        <div className="formulario">
-          <label htmlfor="nomedacategoria"> Telefone </label>
-          <input id="nomedacategoria" name="nomedacategoria" type="text" onChange={onChange} />
-        </div>
-
-        <div className="formulario">
-          <label htmlfor="nomedacategoria"> Email </label>
-          <input id="nomedacategoria" name="nomedacategoria" type="email" onChange={onChange} />
-        </div>
-        </div>
-
-
-
+        <label htmlFor="categoriaProduto">Nome do Fornecedor</label>
+          <input 
+                 type="text" 
+                 id="categoriaProduto" 
+                 name="categoriaProduto"
+                 {...register("categoriaProduto", {
+                  required: 'Preenchimento Obrigatório',
+                  minLength: {
+                    value: 2,
+                    message: 'No minimo dois caracteres' 
+                  }
+                })}
+           />
         
-        <div className="formulario">
-          <label htmlfor="nomedacategoria"> Sexo </label>
-          <div className="formulario3">
-             <input id="nomedacategoria" name="nomedacategoria" type="radio" onChange={onChange} />
-             Masculino
-             <input id="nomedacategoria" name="nomedacategoria" type="radio" onChange={onChange} />
-             Feminino
-          </div>
+        <ErrorMessage errors={errors} name="categoriaProduto">
+        {({ messages }) => messages && Object.entries(messages).map(([type, message]) => ( <p key={type}>{message}</p>))}
+        </ErrorMessage>
+        
         </div>
 
+        <div className="camposimples">
 
+        <label htmlFor="subcategoriaProdutos">CPF/CNPJ</label>
+          <input 
+                 type="text" 
+                 id="subcategoriaProduto" 
+                 name="subcategoriaProduto"
+                 {...register("subcategoriaProduto", {
+                  required: 'Preenchimento Obrigatório',
+                  minLength: {
+                    value: 2,
+                    message: 'No minimo dois caracteres' 
+                  }
+                })}
+           />
+        
+        <ErrorMessage errors={errors} name="subcategoriaProduto">
+        {({ messages }) => messages && Object.entries(messages).map(([type, message]) => ( <p key={type}>{message}</p>))}
+        </ErrorMessage>
 
-        <div className="formulario">
-          <label htmlfor="nomedacategoria"> CEP </label>
-          <input id="nomedacategoria" name="nomedacategoria" type="text" onChange={onChange} />
+        </div>
+   
+        <div className="camposimples">
+
+        <label htmlFor="categoriaProduto">Telefone</label>
+          <input
+                 type="text" 
+                 id="categoriaProduto" 
+                 name="categoriaProduto"
+                 {...register("categoriaProduto", {
+                  required: 'Preenchimento Obrigatório',
+                  minLength: {
+                    value: 2,
+                    message: 'No minimo dois caracteres' 
+                  }
+                })}
+           />
+        
+        <ErrorMessage errors={errors} name="categoriaProduto">
+        {({ messages }) => messages && Object.entries(messages).map(([type, message]) => ( <p key={type}>{message}</p>))}
+        </ErrorMessage>
+        
         </div>
 
-        <div className="formulario2">
-        <div className="formulario">
-          <label htmlfor="nomedacategoria"> Endereço </label>
-          <input id="nomedacategoria" name="nomedacategoria" type="text" onChange={onChange} />
+        <div className="camposimples">
+
+        <label htmlFor="subcategoriaProdutos">E-mail</label>
+          <input 
+                 type="text" 
+                 id="subcategoriaProduto" 
+                 name="subcategoriaProduto"
+                 {...register("subcategoriaProduto", {
+                  required: 'Preenchimento Obrigatório',
+                  minLength: {
+                    value: 2,
+                    message: 'No minimo dois caracteres' 
+                  }
+                })}
+           />
+        
+        <ErrorMessage errors={errors} name="subcategoriaProduto">
+        {({ messages }) => messages && Object.entries(messages).map(([type, message]) => ( <p key={type}>{message}</p>))}
+        </ErrorMessage>
+
+        </div>
         </div>
 
-        <div className="formulario">
-          <label htmlfor="nomedacategoria"> Número </label>
-          <input id="nomedacategoria" name="nomedacategoria" type="text" onChange={onChange} />
+        <div className="campoduplo2">
+        <div className="camposimples">
+
+          <label htmlFor="nomeProduto"> CEP</label>
+          <input 
+                 type="text" 
+                 id="nomeProduto" 
+                 name="nomeProduto"
+                 {...register("nomeProduto", {
+                  required: 'Preenchimento Obrigatório',
+                  minLength: {
+                    value: 2,
+                    message: 'No minimo dois caracteres' 
+                  }
+                })}
+           />
+        
+        <ErrorMessage errors={errors} name="nomeProduto">
+        {({ messages }) => messages && Object.entries(messages).map(([type, message]) => ( <p key={type}>{message}</p>))}
+        </ErrorMessage>
+        </div>
+
+        <div className="camposimples">
+
+        <label htmlFor="categoriaProduto">Endereço</label>
+          <input 
+                 type="text" 
+                 id="categoriaProduto" 
+                 name="categoriaProduto"
+                 {...register("categoriaProduto", {
+                  required: 'Preenchimento Obrigatório',
+                  minLength: {
+                    value: 2,
+                    message: 'No minimo dois caracteres' 
+                  }
+                })}
+           />
+        
+        <ErrorMessage errors={errors} name="categoriaProduto">
+        {({ messages }) => messages && Object.entries(messages).map(([type, message]) => ( <p key={type}>{message}</p>))}
+        </ErrorMessage>
+        
+        </div>
+
+        <div className="camposimples">
+
+        <label htmlFor="subcategoriaProdutos">Número</label>
+          <input 
+                 type="text" 
+                 id="subcategoriaProduto" 
+                 name="subcategoriaProduto"
+                 {...register("subcategoriaProduto", {
+                  required: 'Preenchimento Obrigatório',
+                  minLength: {
+                    value: 2,
+                    message: 'No minimo dois caracteres' 
+                  }
+                })}
+           />
+        
+        <ErrorMessage errors={errors} name="subcategoriaProduto">
+        {({ messages }) => messages && Object.entries(messages).map(([type, message]) => ( <p key={type}>{message}</p>))}
+        </ErrorMessage>
+
         </div>
         </div>
 
-        <div className="formulario">
-          <label htmlfor="nomedacategoria"> Complemento </label>
-          <input id="nomedacategoria" name="nomedacategoria" type="text" onChange={onChange} />
-        </div>
+        <div className="campolongo">
 
-        <div className="formulario"> 
+          <label htmlFor="descricao">Complemento</label>
+          <input
+                 type="text" 
+                 id="descricao" 
+                 name="descricao"
+                 {...register("descricao", {
+                  required: 'Preenchimento Obrigatório',
+                  minLength: {
+                    value: 2,
+                    message: 'No minimo dois caracteres' 
+                  }
+                })}
+           />
+        
+        <ErrorMessage errors={errors} name="descricao">
+        {({ messages }) => messages && Object.entries(messages).map(([type, message]) => ( <p key={type}>{message}</p>))}
+        </ErrorMessage>
+        
+        </div>
+        
           <button type="submit">Cadastrar</button>
-        </div>
          
-      </form>
+    </form>
 
   </div>
   </div>
+  </>
   );
 }

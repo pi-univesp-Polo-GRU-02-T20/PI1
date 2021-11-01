@@ -1,12 +1,13 @@
 import React, { useState } from 'react';
 import '../../App.css';
+import Navbar from '../../components/Menu/Navbar';
 
 const initialValue = {
   codigodacategoria: '',
   nomedacategoria: ''
 }
 
-export default function Movimentacao_compra() {
+export default function Cadastro_fornecedor() {
   const  [values, setValues] = useState(initialValue);
  
   function onChange(ev) {
@@ -28,62 +29,69 @@ export default function Movimentacao_compra() {
       <form onSubmit={onSubmit}>
 
         <div className="formulario">
-          <h1>Compra</h1>
+          <h1>Cadastrar Fornecedor</h1>
           <br></br>
         </div>
 
 
         <div className="formulario2">
         <div className="formulario">
-          <label htmlfor="codigodacategoria"> Produto </label>
+          <label htmlfor="codigodacategoria"> Nome </label>
           <input id="codigodacategoria" name="codigodacategoria" type="text" onChange={onChange} />
         </div>
 
         <div className="formulario">
-          <label htmlfor="nomedacategoria"> Cliente </label>
+          <label htmlfor="nomedacategoria"> CPF </label>
           <input id="nomedacategoria" name="nomedacategoria" type="text" onChange={onChange} />
         </div>
         </div>
 
         <div className="formulario2">
         <div className="formulario">
-          <label htmlfor="nomedacategoria"> Código da Nota Fiscal </label>
+          <label htmlfor="nomedacategoria"> Telefone </label>
           <input id="nomedacategoria" name="nomedacategoria" type="text" onChange={onChange} />
         </div>
 
         <div className="formulario">
-          <label htmlfor="nomedacategoria"> Valor total </label>
+          <label htmlfor="nomedacategoria"> Email </label>
           <input id="nomedacategoria" name="nomedacategoria" type="email" onChange={onChange} />
         </div>
         </div>
 
+
+
+        
         <div className="formulario">
-          <label htmlfor="nomedacategoria"> Data da compra </label>
+          <label htmlfor="nomedacategoria"> Sexo </label>
+          <div className="formulario3">
+             <input id="nomedacategoria" name="nomedacategoria" type="radio" onChange={onChange} />
+             Masculino
+             <input id="nomedacategoria" name="nomedacategoria" type="radio" onChange={onChange} />
+             Feminino
+          </div>
+        </div>
+
+
+
+        <div className="formulario">
+          <label htmlfor="nomedacategoria"> CEP </label>
           <input id="nomedacategoria" name="nomedacategoria" type="text" onChange={onChange} />
         </div>
 
         <div className="formulario2">
         <div className="formulario">
-          <label htmlfor="nomedacategoria"> Valor de compra </label>
+          <label htmlfor="nomedacategoria"> Endereço </label>
           <input id="nomedacategoria" name="nomedacategoria" type="text" onChange={onChange} />
         </div>
 
         <div className="formulario">
-          <label htmlfor="nomedacategoria"> Status de operação </label>
+          <label htmlfor="nomedacategoria"> Número </label>
           <input id="nomedacategoria" name="nomedacategoria" type="text" onChange={onChange} />
         </div>
         </div>
 
-        <label for="cars">Choose a car:</label>
-          <select id="cars" name="cars">
-            <option value="volvo">Volvo</option>
-            <option value="saab">Saab</option>
-            <option value="fiat">Fiat</option>
-            <option value="audi">Audi</option>
-          </select>
-
         <div className="formulario">
-          <label htmlfor="nomedacategoria"> Itens da compra </label>
+          <label htmlfor="nomedacategoria"> Complemento </label>
           <input id="nomedacategoria" name="nomedacategoria" type="text" onChange={onChange} />
         </div>
 

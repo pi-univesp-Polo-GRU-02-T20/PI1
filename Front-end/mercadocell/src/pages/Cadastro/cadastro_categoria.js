@@ -10,7 +10,7 @@ export default function Cadastro_categoria() {
   const { register, handleSubmit, formState: { errors } } = useForm();
   const onSubmit = (data) => { 
     console.log(data);
-    axios.post("http://localhost:8080/categoria");
+    axios.post("http://localhost:8080/categoria", data);
   }
 
   return (
@@ -18,7 +18,7 @@ export default function Cadastro_categoria() {
   <Navbar />
   
   <div className="fundo_pagina">
-  <div className="fundo_formulario">
+  <div className="fundo_formulario1">
 
   <div className="titulo">
   <h1>Cadastrar Categoria</h1>

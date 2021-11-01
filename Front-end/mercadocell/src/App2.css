@@ -20,7 +20,7 @@
 
   .campounico {
     flex-direction: column;
-    margin-bottom: 15px;
+    margin-bottom: 0px;
     margin-right: 20px;
     font-size: 15px;
     margin-top: 0px;
@@ -41,13 +41,13 @@
     padding: 0 10px;
     width: 250px;
     margin-right: 250px;
-    margin-bottom: 5px;
+    margin-bottom: 0px;
   }
 
   .campolongo {
     display: flex;
     flex-direction: column;
-    margin-bottom: 15px;
+    margin-bottom: 0px;
     margin-right: 20px;
     font-size: 15px;
     margin-top: 0px;
@@ -68,7 +68,7 @@
     padding: 0 10px;
     width: 500px;
     align-self: center;
-    margin-bottom: 10px;
+    margin-bottom: 0px;
   }
 
   .campolongo textarea {
@@ -86,7 +86,6 @@
   .campo {
     display: flex;
     flex-direction: column;
-    margin-bottom: 15px;
     margin-right: 20px;
     font-size: 15px;
   }
@@ -106,7 +105,6 @@
     padding: 0 10px;
     width: 250px;
     align-self: center;
-    margin-bottom: 10px;
   }
 
   .campo2 {
@@ -118,7 +116,7 @@
   }
 
   .campo2 label {
-    margin-bottom: 5px;
+    margin-bottom: 0px;
     margin-left: 5px;
     font-size: 15px;
     font-weight: 500;
@@ -133,7 +131,7 @@
     padding: 0 10px;
     width: 250px;
     align-self: center;
-    margin-bottom: 10px;
+    margin-bottom: 0px;
   }
 
   .fundo_pagina {
@@ -177,7 +175,7 @@
     border-color: rgb(172, 172, 172);
     display: flex;
     flex-direction: column;
-    height: 300px;
+    height: 550px;
     width: 600px;
     padding: 30px;
     border-top: 5px solid cornflowerblue;
