@@ -48,23 +48,6 @@ CREATE TABLE `categoria` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Table structure for table `cliente`
---
-
-DROP TABLE IF EXISTS `cliente`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `cliente` (
-  `COD_CLIENTE` int NOT NULL AUTO_INCREMENT,
-  `COD_PESSOA` int NOT NULL,
-  `TPO_SEXO` enum('M','F','N') DEFAULT NULL,
-  PRIMARY KEY (`COD_CLIENTE`,`COD_PESSOA`),
-  KEY `FK_CLIENTE_PESSOA_idx` (`COD_PESSOA`),
-  CONSTRAINT `FK_CLIENTE_PESSOA` FOREIGN KEY (`COD_PESSOA`) REFERENCES `pessoa` (`COD_PESSOA`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
 -- Table structure for table `endereco`
 --
 
@@ -98,24 +81,7 @@ CREATE TABLE `estado` (
   `NME_ESTADO` varchar(100) NOT NULL,
   `SGL_UF` varchar(2) NOT NULL,
   PRIMARY KEY (`COD_ESTADO`)
-) ENGINE=InnoDB AUTO_INCREMENT=54 DEFAULT CHARSET=latin1;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Table structure for table `fornecedor`
---
-
-DROP TABLE IF EXISTS `fornecedor`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `fornecedor` (
-  `COD_FORNECEDOR` int NOT NULL AUTO_INCREMENT,
-  `COD_PESSOA` int NOT NULL,
-  `NME_RAZAO_SOCIAL` varchar(95) DEFAULT NULL,
-  PRIMARY KEY (`COD_FORNECEDOR`,`COD_PESSOA`),
-  KEY `FK_FORNECEDOR_PESSOA_IDX` (`COD_PESSOA`),
-  CONSTRAINT `FK_FORNECEDOR_PESSOA` FOREIGN KEY (`COD_PESSOA`) REFERENCES `pessoa` (`COD_PESSOA`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=55 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -184,17 +150,17 @@ DROP TABLE IF EXISTS `operacao`;
 CREATE TABLE `operacao` (
   `COD_OPERACAO` int NOT NULL AUTO_INCREMENT,
   `DTA_OPERACAO` datetime DEFAULT NULL,
-  `COD_NOTA_FISCAL` int DEFAULT NULL,
-  `VRL_TOTAL` decimal(10,2) DEFAULT NULL,
+  `COD_NOTA_FISCAL` varchar(30) DEFAULT NULL,
+  `VLR_TOTAL` decimal(10,2) DEFAULT NULL,
   `QTD_PARCELA` int DEFAULT NULL,
-  `TPO_STATUS` enum('P','O') DEFAULT NULL COMMENT 'P - pedido (compra ou venda); O - orçamento\n',
+  `TPO_STATUS` enum('P','O') DEFAULT NULL COMMENT 'P - pedido (compra ou venda); O - orçamento\\n',
   `COD_PESSOA` int DEFAULT NULL,
   `FLG_PAGO` tinyint DEFAULT NULL,
   `TPO_OPERACAO` enum('C','V') DEFAULT NULL COMMENT 'C - Compra; V - Venda',
   PRIMARY KEY (`COD_OPERACAO`),
   KEY `FK_OPERACAO_PESSOA_idx` (`COD_PESSOA`),
   CONSTRAINT `FK_OPERACAO_PESSOA` FOREIGN KEY (`COD_PESSOA`) REFERENCES `pessoa` (`COD_PESSOA`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -228,12 +194,9 @@ DROP TABLE IF EXISTS `pessoa`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `pessoa` (
   `COD_PESSOA` int NOT NULL AUTO_INCREMENT,
-  `NME_USUARIO` varchar(50) DEFAULT NULL,
-  `DSC_LOGIN` varchar(20) DEFAULT NULL,
-  `DSC_SENHA` varchar(128) DEFAULT NULL,
-  `FLG_ATIVO` tinyint DEFAULT NULL,
+  `NME_PESSOA` varchar(45) NOT NULL,
   PRIMARY KEY (`COD_PESSOA`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -244,16 +207,14 @@ DROP TABLE IF EXISTS `pessoa_fisica`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `pessoa_fisica` (
-  `COD_PESSOA_FISICA` int NOT NULL AUTO_INCREMENT,
-  `COD_PESSOA` int NOT NULL,
+  `COD_PESSOA` int NOT NULL AUTO_INCREMENT,
   `SGL_UF_NATURALIDADE` char(2) DEFAULT NULL,
-  `NME_PESSOA_FISICA` varchar(100) NOT NULL,
   `DTA_NASCIMENTO` date NOT NULL,
-  `TPO_SEXO` enum('M','F','N') DEFAULT NULL COMMENT 'M - MASCULINO; F - FEMININO; N - NEUTRO',
-  PRIMARY KEY (`COD_PESSOA_FISICA`,`COD_PESSOA`),
+  `TPO_SEXO` char(1) DEFAULT NULL COMMENT 'M - MASCULINO; F - FEMININO; N - NEUTRO',
+  PRIMARY KEY (`COD_PESSOA`),
   KEY `FK_PESSOA_FISICA_PESSOA_IDX` (`COD_PESSOA`),
-  CONSTRAINT `FK_PESSOA_FISICA_PESSOA` FOREIGN KEY (`COD_PESSOA`) REFERENCES `pessoa` (`COD_PESSOA`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  CONSTRAINT `FK_PESSOA_FISICA` FOREIGN KEY (`COD_PESSOA`) REFERENCES `pessoa` (`COD_PESSOA`)
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -264,14 +225,13 @@ DROP TABLE IF EXISTS `pessoa_juridica`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `pessoa_juridica` (
-  `COD_PESSOA_JURIDICA` int NOT NULL AUTO_INCREMENT,
-  `COD_PESSOA` int NOT NULL,
+  `COD_PESSOA` int NOT NULL AUTO_INCREMENT,
   `NME_RAZAO_SOCIAL` varchar(200) NOT NULL,
-  `NME_FANTASIA` varchar(200) NOT NULL,
-  PRIMARY KEY (`COD_PESSOA_JURIDICA`,`COD_PESSOA`),
+  `COD_CNPJ` varchar(30) DEFAULT NULL,
+  PRIMARY KEY (`COD_PESSOA`),
   KEY `FK_PESSOA_JURIDICA_PESSOA_IDX` (`COD_PESSOA`),
-  CONSTRAINT `FK_PESSOA_JURIDICA_PESSOA` FOREIGN KEY (`COD_PESSOA`) REFERENCES `pessoa` (`COD_PESSOA`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  CONSTRAINT `FK_PESSOA_JURIDICA` FOREIGN KEY (`COD_PESSOA`) REFERENCES `pessoa` (`COD_PESSOA`)
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -292,7 +252,7 @@ CREATE TABLE `produto` (
   KEY `FK_PRODUTO_UNIDADE_MEDIDA_IDX` (`COD_UNIDADE_MEDIDA`),
   CONSTRAINT `FK_PRODUTO_SUBCATEGORIA` FOREIGN KEY (`COD_SUBCATEGORIA`) REFERENCES `subcategoria` (`COD_SUBCATEGORIA`),
   CONSTRAINT `FK_PRODUTO_UNIDADE_MEDIDA` FOREIGN KEY (`COD_UNIDADE_MEDIDA`) REFERENCES `unidade_medida` (`COD_UNIDADE_MEDIDA`)
-) ENGINE=InnoDB AUTO_INCREMENT=216546532 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=216546535 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -342,6 +302,26 @@ CREATE TABLE `unidade_medida` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
+-- Table structure for table `usuario`
+--
+
+DROP TABLE IF EXISTS `usuario`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `usuario` (
+  `COD_USUARIO` int NOT NULL AUTO_INCREMENT,
+  `DSC_LOGIN` varchar(20) DEFAULT NULL,
+  `DSC_SENHA` varchar(128) DEFAULT NULL,
+  `FLG_ATIVO` tinyint DEFAULT NULL,
+  `COD_PESSOA` int DEFAULT NULL,
+  PRIMARY KEY (`COD_USUARIO`),
+  UNIQUE KEY `DSC_LOGIN_UNIQUE` (`DSC_LOGIN`),
+  KEY `FK_USUARIO_PESSOA` (`COD_PESSOA`),
+  CONSTRAINT `FK_USUARIO_PESSOA` FOREIGN KEY (`COD_PESSOA`) REFERENCES `pessoa` (`COD_PESSOA`)
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
 -- Temporary view structure for view `vw_produto`
 --
 
@@ -356,7 +336,10 @@ SET @saved_cs_client     = @@character_set_client;
  1 AS `COD_SUBCATEGORIA`,
  1 AS `NME_SUBCATEGORIA`,
  1 AS `COD_CATEGORIA`,
- 1 AS `NME_CATEGORIA`*/;
+ 1 AS `NME_CATEGORIA`,
+ 1 AS `COD_UNIDADE_MEDIDA`,
+ 1 AS `NME_UNIDADE_MEDIDA`,
+ 1 AS `SGL_UNIDADE_MEDIDA`*/;
 SET character_set_client = @saved_cs_client;
 
 --
@@ -387,7 +370,7 @@ SET character_set_client = @saved_cs_client;
 /*!50001 SET collation_connection      = utf8mb4_0900_ai_ci */;
 /*!50001 CREATE ALGORITHM=UNDEFINED */
 /*!50013 DEFINER=`root`@`localhost` SQL SECURITY DEFINER */
-/*!50001 VIEW `vw_produto` AS select `pr`.`COD_PRODUTO` AS `COD_PRODUTO`,`pr`.`NME_PRODUTO` AS `NME_PRODUTO`,`pr`.`DSC_PRODUTO` AS `DSC_PRODUTO`,`sc`.`COD_SUBCATEGORIA` AS `COD_SUBCATEGORIA`,`sc`.`NME_SUBCATEGORIA` AS `NME_SUBCATEGORIA`,`ct`.`COD_CATEGORIA` AS `COD_CATEGORIA`,`ct`.`NME_CATEGORIA` AS `NME_CATEGORIA` from ((`produto` `pr` join `subcategoria` `sc` on((`pr`.`COD_SUBCATEGORIA` = `sc`.`COD_SUBCATEGORIA`))) join `categoria` `ct` on((`ct`.`COD_CATEGORIA` = `sc`.`COD_CATEGORIA`))) */;
+/*!50001 VIEW `vw_produto` AS select `pr`.`COD_PRODUTO` AS `COD_PRODUTO`,`pr`.`NME_PRODUTO` AS `NME_PRODUTO`,`pr`.`DSC_PRODUTO` AS `DSC_PRODUTO`,`sc`.`COD_SUBCATEGORIA` AS `COD_SUBCATEGORIA`,`sc`.`NME_SUBCATEGORIA` AS `NME_SUBCATEGORIA`,`ct`.`COD_CATEGORIA` AS `COD_CATEGORIA`,`ct`.`NME_CATEGORIA` AS `NME_CATEGORIA`,`um`.`COD_UNIDADE_MEDIDA` AS `COD_UNIDADE_MEDIDA`,`um`.`NME_UNIDADE_MEDIDA` AS `NME_UNIDADE_MEDIDA`,`um`.`SGL_UNIDADE_MEDIDA` AS `SGL_UNIDADE_MEDIDA` from (((`produto` `pr` join `subcategoria` `sc` on((`pr`.`COD_SUBCATEGORIA` = `sc`.`COD_SUBCATEGORIA`))) join `categoria` `ct` on((`ct`.`COD_CATEGORIA` = `sc`.`COD_CATEGORIA`))) join `unidade_medida` `um` on((`um`.`COD_UNIDADE_MEDIDA` = `pr`.`COD_UNIDADE_MEDIDA`))) */;
 /*!50001 SET character_set_client      = @saved_cs_client */;
 /*!50001 SET character_set_results     = @saved_cs_results */;
 /*!50001 SET collation_connection      = @saved_col_connection */;
@@ -419,4 +402,4 @@ SET character_set_client = @saved_cs_client;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-10-27  2:18:42
+-- Dump completed on 2021-11-04  1:03:08
