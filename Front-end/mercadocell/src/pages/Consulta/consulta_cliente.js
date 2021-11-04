@@ -1,35 +1,30 @@
-import Navbar from '../../components/Menu/Navbar';
-import '../../cliente.css';
-import React, { useState, useEffect } from 'react';
-import MaterialTable from 'material-table';
-//import Api from '../../components/Services/Api';
+import React, { Component } from 'react';
+import Api from '../../components/Services/Api'
 
+  class App extends Component {
 
-export default function Cadastro_categoria() {
+    state = {
+      categorias: [],
+    }
+  
+    async componentDidMount() {
+      const response = await Api.get('/categoria');
+  
+      this.setState({ categorias: response.data });
+    }
+  
+    render() {
+  
+      const { categorias } = this.state;
+      
+      return (
+      <>
+              {categorias.map(filme => (
+              <option>{filme.nomeCategoria}</option>
+              ))}
+      </>
+        );
+    };
+  };
 
-  const [data, setData] = useState([])
-  const columns = [
-    { title: "Código da categoria", field: "codCategoria" },
-    { title: "Número da categoria", field: "nomeCategoria" },
-  ]
-  useEffect(() => {
-    fetch("http://localhost:8080/categoria")
-      .then(resp => resp.json())
-      .then(resp => {
-        setData(resp)
-      })
-  }, [])
-
-  return (
-    <>
-    <Navbar />
-    <div className="App">
-      <MaterialTable
-        title="Consulta de Categoria"
-        data={data}
-        columns={columns}
-      />
-    </div>
-    </>
-  );
-}
+export default App;

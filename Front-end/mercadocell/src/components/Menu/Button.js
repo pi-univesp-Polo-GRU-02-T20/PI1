@@ -10,3 +10,5 @@ export function Button() {
       <button className='btn' onClick={() => setToken(null)}>Sair</button>
   );
 }
+
+

@@ -1,11 +1,11 @@
 import Navbar from '../../components/Menu/Navbar';
-import '../../consulta.css';
+import './consulta.css';
 import React, { useState, useEffect } from 'react';
 import MaterialTable from 'material-table';
 //import Api from '../../components/Services/Api';
 
 
-export default function Cadastro_categoria() {
+export default function Consuta_categoria() {
 
   const [data, setData] = useState([])
   const columns = [
@@ -23,7 +23,7 @@ export default function Cadastro_categoria() {
   return (
     <>
     <Navbar />
-    <div className="Tabela">
+    <div className="tabela">
       <MaterialTable
         title="Consulta de Categoria"
         data={data}

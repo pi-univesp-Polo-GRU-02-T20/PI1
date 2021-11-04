@@ -5,7 +5,7 @@ import { ErrorMessage } from '@hookform/error-message';
 import '../../cliente.css';
 import axios from 'axios';
 
-export default function Cadastro_categoria() {
+export default function Cadastro_cliente() {
 
   const { register, handleSubmit, formState: { errors } } = useForm();
   const onSubmit = (data) => { 

@@ -10,7 +10,7 @@ export default function Cadastro_categoria() {
   const { register, handleSubmit, formState: { errors } } = useForm();
   const onSubmit = (data) => { 
     console.log(data);
-    axios.post("http://localhost:8080/cliente");
+    axios.post("http://localhost:8080/fornecedor");
   }
 
   return (

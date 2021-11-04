@@ -14,12 +14,21 @@ import Cadastro_unidadedemedida from './Cadastro/cadastro_unidadedemedida';
 import Cadastro_produto from './Cadastro/cadastro_produto';
 import Cadastro_cliente from './Cadastro/cadastro_cliente';
 import Cadastro_fornecedor from './Cadastro/cadastro_fornecedor';
+
 import Movimentacao_compra from './Movimentacao/movimentacao_compra';
 import Movimentacao_venda from './Movimentacao/movimentacao_venda';
 import Movimentacao_recebimento from './Movimentacao/movimentacao_recebimento';
 import Movimentacao_pagamento from './Movimentacao/movimentacao_pagamento';
+
 import Consulta_categoria from './Consulta/consulta_categoria';
+import Consulta_subcategoria from './Consulta/consulta_subcategoria';
+
+import Consulta_unidadedemedida from './Consulta/consulta_unidadedemedida';
+import Consulta_produto from './Consulta/consulta_produto';
+
 import Consulta_cliente from './Consulta/consulta_cliente';
+import Consulta_fornecedor from './Consulta/consulta_cliente';
+
 
 
 const PagesRoot = () => (
@@ -34,8 +43,14 @@ const PagesRoot = () => (
           <RoutesPrivate path='/cadastro-produto' component={Cadastro_produto} />
           <RoutesPrivate path='/cadastro-cliente' component={Cadastro_cliente} />
           <RoutesPrivate path='/cadastro-fornecedor' component={Cadastro_fornecedor} />
+          
           <RoutesPrivate path='/consulta-categoria' component={Consulta_categoria} />
+          <RoutesPrivate path='/consulta-subcategoria' component={Consulta_subcategoria} />
+          <RoutesPrivate path='/consulta-unidadedemedida' component={Consulta_unidadedemedida} />
+          <RoutesPrivate path='/consulta-produto' component={Consulta_produto} />
           <RoutesPrivate path='/consulta-cliente' component={Consulta_cliente} />
+          <RoutesPrivate path='/consulta-fornecedor' component={Consulta_fornecedor} />
+
           <RoutesPrivate path='/movimentacao-compra' component={Movimentacao_compra} />
           <RoutesPrivate path='/movimentacao-venda' component={Movimentacao_venda} />
           <RoutesPrivate path='/movimentacao-recebimento' component={Movimentacao_recebimento} />

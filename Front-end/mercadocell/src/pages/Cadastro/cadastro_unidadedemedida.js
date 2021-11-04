@@ -2,7 +2,7 @@ import React from 'react';
 import Navbar from '../../components/Menu/Navbar';
 import { useForm } from "react-hook-form";
 import { ErrorMessage } from '@hookform/error-message';
-import '../../App.css';
+import './cadastro_unidadedemedida.css';
 import axios from 'axios';
 
 export default function Cadastro_categoria() {
@@ -18,16 +18,17 @@ export default function Cadastro_categoria() {
   <Navbar />
   
   <div className="fundo_pagina">
-  <div className="fundo_formulario2">
 
-  <div className="titulo">
-  <h1>Cadastrar</h1>
-  <h1>Unidade de Medida</h1>
-  </div>
+    <form className="udmedida_form" onSubmit = { handleSubmit(onSubmit) } >
 
-    <form onSubmit = { handleSubmit(onSubmit) } >
+      <div className="udmedida_titulo">
+        <h1>Cadastrar</h1>
+        <h1>Unidade de Medida</h1>
+      </div>
 
-        <div className="campo">
+      <div className="udmedida_linha">
+
+        <div className="udmedida_campo">
 
           <label htmlFor="nomeUnidadedeMedida"> Nome da Unidade de Medida</label>
           <input 
@@ -49,7 +50,11 @@ export default function Cadastro_categoria() {
 
         </div>
 
-        <div className="campo">
+      </div>
+
+      <div className="udmedida_linha">
+
+        <div className="udmedida_campo">
 
           <label htmlFor="nomedacategoria"> Sigla da Unidade de Medida</label>
           <input 
@@ -71,12 +76,13 @@ export default function Cadastro_categoria() {
 
         </div>
 
+      </div>
+
           <button type="submit">Cadastrar</button>
 
          
     </form>
 
-  </div>
   </div>
   </>
   );

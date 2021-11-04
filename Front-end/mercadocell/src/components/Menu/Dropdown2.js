@@ -10,17 +10,17 @@ const MenuItems = [
   },
   {
     title: 'Subcategoria',
-    path: '/consulting',
+    path: '/consulta-subcategoria',
     cName: 'dropdown-link'
   },
   {
     title: 'Unidade de Medida',
-    path: '/marketing',
+    path: '/consulta-unidadedemedida',
     cName: 'dropdown-link'
   },
   {
     title: 'Produto',
-    path: '/development',
+    path: '/consulta-produto',
     cName: 'dropdown-link'
   },
   {
@@ -30,7 +30,7 @@ const MenuItems = [
   },
   {
     title: 'Fornecedor',
-    path: '/development',
+    path: '/consulta-fornecedor',
     cName: 'dropdown-link'
   },
   {

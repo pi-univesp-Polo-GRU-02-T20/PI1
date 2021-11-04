@@ -2,8 +2,9 @@ import React from 'react';
 import Navbar from '../../components/Menu/Navbar';
 import { useForm } from "react-hook-form";
 import { ErrorMessage } from '@hookform/error-message';
-import '../../App.css';
+import './cadastro_categoria.css';
 import axios from 'axios';
+import App from '../Consulta/consulta_cliente'
 
 export default function Cadastro_categoria() {
 
@@ -15,25 +16,26 @@ export default function Cadastro_categoria() {
 
   return (
   <>
+  
   <Navbar />
   
   <div className="fundo_pagina">
-  <div className="fundo_formulario1">
 
-  <div className="titulo">
-  <h1>Cadastrar Categoria</h1>
-  </div>
+    <form className = "categoria_form" onSubmit = { handleSubmit(onSubmit) } >
 
-    <form onSubmit = { handleSubmit(onSubmit) } >
+    <div className="categoria_titulo">
+      <h1>Cadastrar Categoria</h1>
+    </div>
 
-        <div className="campo">
+        <div className="categoria_linha">
+        <div className="categoria_campo">
 
           <label htmlFor="nomedacategoria"> Nome da categoria </label>
           <input 
                  type="text" 
-                 id="nomeCategoria" 
-                 name="nomeCategoria"
-                 {...register("nomeCategoria", {
+                 id="nomexCategoria" 
+                 name="nomexCategoria"
+                 {...register("nomexCategoria", {
                   required: 'Preenchimento Obrigatório',
                   minLength: {
                     value: 2,
@@ -48,12 +50,17 @@ export default function Cadastro_categoria() {
 
         </div>
 
-          <button type="submit">Cadastrar</button>
+        <select>
+                <App />
+        </select>
+
+        </div>
+
+        <button type="submit">Cadastrar</button>
 
          
     </form>
 
-  </div>
   </div>
   </>
   );
