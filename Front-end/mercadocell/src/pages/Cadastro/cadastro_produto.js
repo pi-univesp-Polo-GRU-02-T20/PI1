@@ -1,17 +1,19 @@
-import React, { Component } from 'react';
+import React from 'react';
 import Navbar from '../../components/Menu/Navbar';
 import { useForm } from "react-hook-form";
 import { ErrorMessage } from '@hookform/error-message';
 import './cadastro_produto.css';
 import axios from 'axios';
-import Api from '../../components/Services/Api'
+import Listar_categoria from '../../components/Listas/listar_categoria';
+import Listar_subcategoria from '../../components/Listas/listar_subcategoria';
+import Listar_unidadedemedida from '../../components/Listas/listar_unidadedemedida';
 
 export default function Cadastro_produto() {
 
   const { register, handleSubmit, formState: { errors } } = useForm();
   const onSubmit = (data) => { 
     console.log(data);
-    axios.post("http://localhost:8080/produto");
+    axios.post("http://localhost:8080/produto", data);
   }
 
   return (
@@ -44,24 +46,24 @@ export default function Cadastro_produto() {
                 })}
            />
         
-          <ErrorMessage errors={errors} name="categoriaProduto">
+          <ErrorMessage errors={errors} name="nomeProduto">
             {({ messages }) => messages && Object.entries(messages).map(([type, message]) => ( <p key={type}>{message}</p>))}
           </ErrorMessage>
 
       </div>
-      
+
     </div>
 
     <div className="produto_linha">
 
       <div className="produto_campo">
 
-          <label htmlFor="nomeProduto">Categoria</label>
+          <label htmlFor="nomeCategoria">Categoria</label>
           <select 
                  type="text" 
-                 id="nomeProduto" 
-                 name="nomeProduto"
-                 {...register("categoriaProduto", {
+                 id="nomeCategoria" 
+                 name="nomeCategoria"
+                 {...register("nomeCategoria", {
                   required: 'Preenchimento Obrigatório',
                   minLength: {
                     value: 2,
@@ -69,9 +71,10 @@ export default function Cadastro_produto() {
                   }
                 })}
            >
+             <Listar_categoria />
           </select>
                              
-        <ErrorMessage errors={errors} name="categoriaProduto">
+        <ErrorMessage errors={errors} name="nomeCategoria">
         {({ messages }) => messages && Object.entries(messages).map(([type, message]) => ( <p key={type}>{message}</p>))}
         </ErrorMessage>
 
@@ -79,27 +82,61 @@ export default function Cadastro_produto() {
 
       <div className="produto_campo">
 
-<label htmlFor="nomeProduto">Subcategoria</label>
+<label htmlFor="nomeSubCategoria">Subcategoria</label>
 <select 
        type="text" 
-       id="nomeProduto" 
-       name="nomeProduto"
-       {...register("categoriaProduto", {
+       id="nomeSubCategoria" 
+       name="nomeSubCategoria"
+       {...register("nomeSubCategoria", {
         required: 'Preenchimento Obrigatório',
         minLength: {
           value: 2,
           message: 'No minimo dois caracteres' 
         }
       })}
- />
+ >
+   <Listar_subcategoria />
+</select>
 
-<ErrorMessage errors={errors} name="categoriaProduto">
+<ErrorMessage errors={errors} name="nomeSubCategoria">
 {({ messages }) => messages && Object.entries(messages).map(([type, message]) => ( <p key={type}>{message}</p>))}
 </ErrorMessage>
 
 </div>
 
     </div>
+
+
+<div className="produto_linha3">
+
+      <div className="produto_campo">
+
+          <label htmlFor="nomeCategoria">Unidade de Medida</label>
+          <select 
+                 type="text" 
+                 id="nomeCategoria" 
+                 name="nomeCategoria"
+                 {...register("nomeCategoria", {
+                  required: 'Preenchimento Obrigatório',
+                  minLength: {
+                    value: 2,
+                    message: 'No minimo dois caracteres'
+                  }
+                })}
+           >
+             <Listar_unidadedemedida />
+          </select>
+                             
+        <ErrorMessage errors={errors} name="nomeCategoria">
+        {({ messages }) => messages && Object.entries(messages).map(([type, message]) => ( <p key={type}>{message}</p>))}
+        </ErrorMessage>
+
+      </div>
+
+    </div>
+
+
+
     <div className="produto_linha">
       <div className="produto_campo">
         <label htmlFor="descricaoProduto">Descrição</label>

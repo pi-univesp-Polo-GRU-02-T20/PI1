@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import Api from '../../components/Services/Api'
+import Api from '../Services/Api'
 
-  class App extends Component {
+  class Listar_categoria extends Component {
 
     state = {
       categorias: [],
@@ -20,11 +20,11 @@ import Api from '../../components/Services/Api'
       return (
       <>
               {categorias.map(filme => (
-              <option id="nomeCategoria" name="nomeCategoria">{filme.nomeCategoria}</option>
+              <option id="nomeCategoria" name="nomeCategoria" value={filme.codCategoria} key={filme.codCategoria}>{filme.nomeCategoria}</option>
               ))}
       </>
         );
     };
   };
 
-export default App;
+export default Listar_categoria;

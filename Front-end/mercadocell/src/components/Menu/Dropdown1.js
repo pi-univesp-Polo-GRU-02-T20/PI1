@@ -24,13 +24,28 @@ const MenuItems1 = [
     cName: 'dropdown-link'
   },
   {
-    title: 'Cliente',
-    path: '/cadastro-cliente',
+    title: 'Pessoa Física',
+    path: '/cadastro-pessoafisica',
     cName: 'dropdown-link'
   },
   {
-    title: 'Fornecedor',
-    path: '/cadastro-fornecedor',
+    title: 'Pessoa Jurídica',
+    path: '/cadastro-pessoajuridica',
+    cName: 'dropdown-link'
+  },
+  {
+    title: 'Usuário',
+    path: '/cadastro-usuario',
+    cName: 'dropdown-link'
+  },
+  {
+    title: 'Bairro',
+    path: '/cadastro-bairro',
+    cName: 'dropdown-link'
+  },
+  {
+    title: 'Estado',
+    path: '/cadastro-estado',
     cName: 'dropdown-link'
   }
 ];

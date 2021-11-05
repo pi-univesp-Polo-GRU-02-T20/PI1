@@ -12,8 +12,13 @@ import Cadastro_categoria from './Cadastro/cadastro_categoria';
 import Cadastro_subcategoria from './Cadastro/cadastro_subcategoria';
 import Cadastro_unidadedemedida from './Cadastro/cadastro_unidadedemedida';
 import Cadastro_produto from './Cadastro/cadastro_produto';
+import Cadastro_pessoafisica from './Cadastro/cadastro_pessoafisica';
+import Cadastro_pessoajuridica from './Cadastro/cadastro_pessoajuridica';
 import Cadastro_cliente from './Cadastro/cadastro_cliente';
 import Cadastro_fornecedor from './Cadastro/cadastro_fornecedor';
+import Cadastro_usuario from './Cadastro/cadastro_usuario';
+import Cadastro_bairro from './Cadastro/cadastro_bairro';
+import Cadastro_estado from './Cadastro/cadastro_estado';
 
 import Movimentacao_compra from './Movimentacao/movimentacao_compra';
 import Movimentacao_venda from './Movimentacao/movimentacao_venda';
@@ -41,8 +46,13 @@ const PagesRoot = () => (
           <RoutesPrivate path='/cadastro-subcategoria' component={Cadastro_subcategoria} />
           <RoutesPrivate path='/cadastro-unidadedemedida' component={Cadastro_unidadedemedida} />
           <RoutesPrivate path='/cadastro-produto' component={Cadastro_produto} />
+          <RoutesPrivate path='/cadastro-pessoafisica' component={Cadastro_pessoafisica} />
+          <RoutesPrivate path='/cadastro-pessoajuridica' component={Cadastro_pessoajuridica} />
           <RoutesPrivate path='/cadastro-cliente' component={Cadastro_cliente} />
           <RoutesPrivate path='/cadastro-fornecedor' component={Cadastro_fornecedor} />
+          <RoutesPrivate path='/cadastro-usuario' component={Cadastro_usuario} />
+          <RoutesPrivate path='/cadastro-bairro' component={Cadastro_bairro} />
+          <RoutesPrivate path='/cadastro-estado' component={Cadastro_estado} />
           
           <RoutesPrivate path='/consulta-categoria' component={Consulta_categoria} />
           <RoutesPrivate path='/consulta-subcategoria' component={Consulta_subcategoria} />

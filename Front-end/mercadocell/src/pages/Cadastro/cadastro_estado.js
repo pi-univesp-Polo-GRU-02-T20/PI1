@@ -2,16 +2,15 @@ import React from 'react';
 import Navbar from '../../components/Menu/Navbar';
 import { useForm } from "react-hook-form";
 import { ErrorMessage } from '@hookform/error-message';
-import './cadastro_subcategoria.css';
+import './cadastro_estado.css';
 import axios from 'axios';
-import Listar_categoria from '../../components/Listas/listar_categoria';
 
-export default function Cadastro_subcategoria() {
+export default function Cadastro_estado() {
 
   const { register, handleSubmit, formState: { errors } } = useForm();
   const onSubmit = (data) => { 
     console.log(data);
-    axios.post("http://localhost:8080/subCategoria", data);
+    axios.post("http://localhost:8080/estado", data);
   }
 
   return (
@@ -24,14 +23,14 @@ export default function Cadastro_subcategoria() {
     <form className = "subCategoria_form" onSubmit = { handleSubmit(onSubmit) } >
 
     <div className="subCategoria_titulo">
-      <h1>Cadastrar Subcategoria</h1>
+      <h1>Cadastrar Estado</h1>
     </div>
 
         <div className="subCategoria_linha">
         <div className="subCategoria_campo">
 
-          <label htmlFor="selecionarCategoria"> Categoria </label>
-          <select 
+          <label htmlFor="selecionarCategoria"> Nome do Estado </label>
+          <input 
                  type="text" 
                  id="selecionarCategoria" 
                  name="selecionarCategoria"
@@ -42,9 +41,8 @@ export default function Cadastro_subcategoria() {
                     message: 'No minimo dois caracteres' 
                   }
                 })}
-           >
-             <Listar_categoria />
-           </select>
+           />
+             
         
            <ErrorMessage errors={errors} name="nomeCategoria">
              {({ messages }) => messages && Object.entries(messages).map(([type, message]) => ( <p key={type}>{message}</p>))}
@@ -56,7 +54,7 @@ export default function Cadastro_subcategoria() {
         <div className="subCategoria_linha">
         <div className="subCategoria_campo">
 
-          <label htmlFor="nomeSubcategoria"> Nome da Subcategoria </label>
+          <label htmlFor="nomeSubcategoria"> Sigla UF </label>
           <input 
                  type="text" 
                  id="nomeSubcategoria" 
