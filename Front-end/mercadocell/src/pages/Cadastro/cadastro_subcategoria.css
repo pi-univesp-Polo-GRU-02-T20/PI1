@@ -14,10 +14,12 @@
     }
   
   .subCategoria_form{
+    margin-top: 200px;
     height: 400px;
     width: 400px;
     border-top: 5px solid cornflowerblue;
-    border-radius: 0px;;
+    border-radius: 0px;
+    margin-top: 75px;
   }
   
   .subCategoria_titulo{

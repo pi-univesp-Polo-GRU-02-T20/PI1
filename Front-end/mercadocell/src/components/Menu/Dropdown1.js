@@ -39,13 +39,8 @@ const MenuItems1 = [
     cName: 'dropdown-link'
   },
   {
-    title: 'Bairro',
-    path: '/cadastro-bairro',
-    cName: 'dropdown-link'
-  },
-  {
-    title: 'Estado',
-    path: '/cadastro-estado',
+    title: 'Tipo de Pagamento',
+    path: '/cadastro-tipopagamento',
     cName: 'dropdown-link'
   }
 ];

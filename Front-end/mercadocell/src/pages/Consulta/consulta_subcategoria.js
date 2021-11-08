@@ -1,37 +1,121 @@
 import Navbar from '../../components/Menu/Navbar';
+import MaterialTable from "material-table";
+import React, { useEffect, useState } from "react";
 import './consulta.css';
-import React, { useState, useEffect } from 'react';
-import MaterialTable from 'material-table';
-//import Api from '../../components/Services/Api';
-
+import axios from "axios";
 
 export default function Consulta_subcategoria() {
 
-  const [data, setData] = useState([])
-  const columns = [
-    { title: "Código da Subcategoria", field: "codSubCategoria" },
-    { title: "Número da Subcategoria", field: "nomeSubCategoria" },
-    { title: "Código da Categoria", field: "categoria.codCategoria" },
-    { title: "Número da Categoria", field: "categoria.nomeCategoria" },
-  ]
-  useEffect(() => {
-    fetch("http://localhost:8080/subCategoria")
-      .then(resp => resp.json())
-      .then(resp => {
-        setData(resp)
-      })
-  }, [])
+    var url = "http://localhost:8080/subCategoria/"
 
-  return (
-    <>
-    <Navbar />
-    <div className="tabela">
-      <MaterialTable
-        title="Consulta de Subcategoria"
-        data={data}
-        columns={columns}
-      />
-    </div>
+    const [entries, setEntries] = useState({
+        data: [
+            {
+                codSubCategoria: "",
+                nomeSubCategoria: "",
+                codCategoria: "",
+                nomeCategoria: ""
+            }
+        ]
+    });
+
+    const [state] = React.useState({
+        columns: [
+            { title: "Código da Subcategoria", field: "codSubCategoria", editable:false},
+            { title: "Nome da Subcategoria", field: "nomeSubCategoria" },
+            { title: "Código da Categoria", field: "codCategoria", editable: false},
+            { title: "Nome da Categoria", field: "nomeCategoria" }
+        ]
+    });
+
+    useEffect(() => {
+        axios
+        .get("http://localhost:8080/subCategoria")
+        .then(response => {
+        let data = [];
+    response.data.forEach(el => {
+      data.push(
+        {
+        codSubCategoria: el.codSubCategoria,
+        nomeSubCategoria: el.nomeSubCategoria, 
+        codCategoria: el.categoria.codCategoria,
+        nomeCategoria: el.categoria.nomeCategoria
+        }
+    );
+});
+    setEntries({ data: data });
+})
+.catch(function(error) {
+        console.log(error);
+    });
+}, []);
+
+    return (
+      <>
+      <Navbar />
+        <MaterialTable
+    title="Consulta de Subcategoria"
+    data={entries.data}
+    columns={state.columns}
+    editable={{
+        onRowUpdate: (newData, oldData) =>
+        new Promise(resolve => {
+            setTimeout(() => {
+            resolve();
+            const data = [...entries.data];
+            data[data.indexOf(oldData)] = newData;
+            axios
+                .put("http://localhost:8080/subCategoria", newData, {
+                    params: {
+                        codSubCategoria: entries.data[0].codSubCategoria
+                    }
+                })
+                .then(res => console.log(res.data));
+            setEntries({ ...entries, data });
+        }, 600);
+    }),
+        onRowDelete: oldData =>
+        new Promise(resolve => {
+            setTimeout(() => {
+            resolve();
+            const data = [...entries.data];
+            data.splice(data.indexOf(oldData), 1);
+            axios
+            .delete(url + oldData.codSubCategoria)
+                .then(res => console.log(res.data));
+            setEntries({ ...entries, data });
+        }, 600);
+    })
+    }}
+    localization={{
+      body: {
+        emptyDataSourceMessage: 'Nenhum registro para exibir',
+        addTooltip: "Adicionar",
+        deleteTooltip: "Deletar",
+        editTooltip: "Editar",
+        editRow: {
+          saveTooltip: "Salvar",
+          cancelTooltip: "Cancelar",
+          deleteText: "Tem certeza que deseja deletar este registro?"
+        },
+      },
+      header: {
+        actions: 'Ações'
+      },
+      toolbar: {
+        searchTooltip: 'Pesquisar',
+        searchPlaceholder: 'Pesquisar'
+      },
+      pagination: {
+        labelRowsSelect: 'linhas',
+        labelDisplayedRows: '{count} de {from}-{to}',
+        firstTooltip: 'Primeira página',
+        previousTooltip: 'Página anterior',
+        nextTooltip: 'Próxima página',
+        lastTooltip: 'Última página'
+      }
+    }}
+    />
     </>
-  );
+);
 }

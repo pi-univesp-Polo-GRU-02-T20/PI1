@@ -15,7 +15,6 @@ export default function Cadastro_categoria() {
 
   return (
   <>
-  
   <Navbar />
   
   <div className="fundo_pagina">

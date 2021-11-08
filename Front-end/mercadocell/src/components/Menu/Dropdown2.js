@@ -24,23 +24,23 @@ const MenuItems = [
     cName: 'dropdown-link'
   },
   {
-    title: 'Cliente',
-    path: '/consulta-cliente',
+    title: 'Pessoa Física',
+    path: '/consulta-pessoafisica',
     cName: 'dropdown-link'
   },
   {
-    title: 'Fornecedor',
-    path: '/consulta-fornecedor',
+    title: 'Pessoa Jurídica',
+    path: '/consulta-pessoajuridica',
     cName: 'dropdown-link'
   },
   {
-    title: 'Compra',
-    path: '/development',
+    title: 'Usuário',
+    path: '/consulta-usuario',
     cName: 'dropdown-link'
   },
   {
-    title: 'Venda',
-    path: '/development',
+    title: 'Tipo de Pagamento',
+    path: '/consulta-tipopagamento',
     cName: 'dropdown-link'
   }
 ];

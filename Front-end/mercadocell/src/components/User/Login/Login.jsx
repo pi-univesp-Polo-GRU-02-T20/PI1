@@ -1,22 +1,17 @@
-import React, { useState, useContext } from 'react'
+import React, { useState, useContext, useEffect } from 'react'
 import { useHistory } from 'react-router-dom';
 import StoreContext from '../../Store/Context';
 import UIButton from '../../UI/Button/Button';
+import axios from 'axios';
 
-import { HiUser, HiLockClosed } from "react-icons/hi"
-import { HiEye, HiEyeOff } from "react-icons/hi"
+import { HiUser, HiLockClosed } from "react-icons/hi";
 
 import './Login.css'
 
-function initialState() {
-  return { user: '', password: '' };
-}
 
-function login({ user, password }) {
-  if (user === 'admin' && password === 'admin') {
-    return { token: '1234' };
-  }
-  return { error: 'Usuário ou senha inválido' };
+
+function initialState() {
+  return { login: '', senha: '' };
 }
 
 const UserLogin = () => {
@@ -25,6 +20,27 @@ const UserLogin = () => {
   const { setToken } = useContext(StoreContext);
   const history = useHistory();
 
+
+  values.codPessoa = 1;
+  values.codUsuario = 8;
+  values.ativo = true;
+  values.nomePessoa = "Leandro Wing";
+
+
+function login() {
+  
+    if (true == true) {
+      return { token: '1234' };
+    }
+    return { error: 'Usuário ou senha inválido' };
+        
+}
+
+
+
+
+
+
   function onChange(event) {
     const { value, name } = event.target;
 
@@ -32,9 +48,15 @@ const UserLogin = () => {
       ...values,
       [name]: value
     });
+
   }
 
+
+
+
+
   function onSubmit(event) {
+
     event.preventDefault();
 
     const { token, error } = login(values);
@@ -61,9 +83,9 @@ const UserLogin = () => {
                     <input
                         id="user"
                         type="text"
-                        name="user"
+                        name="login"
                         placeholder="Usuário"
-                        value={values.user}
+                        value={values.login}
                         onChange={onChange}
                     />
                 </div>
@@ -73,9 +95,9 @@ const UserLogin = () => {
                     <input
                         id="password"
                         type="password"
-                        name="password"
+                        name="senha"
                         placeholder="Senha"
-                        value={values.password}
+                        value={values.senha}
                         onChange={onChange}
                      />
                 </div>

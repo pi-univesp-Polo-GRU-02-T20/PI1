@@ -4,39 +4,45 @@ import React, { useEffect, useState } from "react";
 import './consulta.css';
 import axios from "axios";
 
-export default function Consulta_UnidadeMedida() {
+export default function Consulta_pessoajuridica() {
 
-    var url = "http://localhost:8080/unidadeMedida/"
+    var url = "http://localhost:8080/pessoaJuridica/"
 
     const [entries, setEntries] = useState({
         data: [
             {
-                codUnidadeMedida: "",
-                nomeUnidadeMedida: "",
-                siglaUnidadeMedida: ""
+                codCNPJ: "",
+                codPessoa: "",
+                codPessoaJuridica: "",
+                nomePessoa: "",
+                nomeRazaoSocial:""
             }
         ]
     });
 
     const [state] = React.useState({
         columns: [
-            { title: "Código da Unidade de Medida", field: "codUnidadeMedida", editable:false},
-            { title: "Nome da Unidade de Medida", field: "nomeUnidadeMedida" },
-            { title: "Sigla da Unidade de Medida", field: "siglaUnidadeMedida" }
+            { title: "CNPJ", field: "codCNPJ", editable:false},
+            { title: "Código da Pessoa", field: "codPessoa" },
+            { title: "Código da Pessoa Jurídica", field: "codPessoaJuridica" },
+            { title: "Nome Pessoa", field: "nomePessoa" },
+            { title: "Nome Razão Social", field: "nomeRazaoSocial" }
         ]
     });
 
     useEffect(() => {
         axios
-        .get("http://localhost:8080/unidadeMedida")
+        .get("http://localhost:8080/pessoaJuridica")
         .then(response => {
         let data = [];
     response.data.forEach(el => {
       data.push(
         {
-        codUnidadeMedida: el.codUnidadeMedida,
-        nomeUnidadeMedida: el.nomeUnidadeMedida, 
-        siglaUnidadeMedida: el.siglaUnidadeMedida
+        codCNPJ: el.codCNPJ,
+        codPessoa: el.codPessoa, 
+        codPessoaJuridica: el.codPessoaJuridica,
+        nomePessoa: el.nomePessoa,
+        nomeRazaoSocial: el.nomeRazaoSocial
         }
     );
 });
@@ -51,7 +57,7 @@ export default function Consulta_UnidadeMedida() {
       <>
       <Navbar />
         <MaterialTable
-    title="Consulta de Unidade de Medida"
+    title="Consulta de Pessoa Jurídica"
     data={entries.data}
     columns={state.columns}
     editable={{
@@ -62,9 +68,9 @@ export default function Consulta_UnidadeMedida() {
             const data = [...entries.data];
             data[data.indexOf(oldData)] = newData;
             axios
-                .put("http://localhost:8080/unidadeMedida", newData, {
+                .put("http://localhost:8080/pessoaJuridica", newData, {
                     params: {
-                        codUnidadeMedida: entries.data[0].codUnidadeMedida
+                      codCNPJ: entries.data[0].codCNPJ
                     }
                 })
                 .then(res => console.log(res.data));
@@ -78,7 +84,7 @@ export default function Consulta_UnidadeMedida() {
             const data = [...entries.data];
             data.splice(data.indexOf(oldData), 1);
             axios
-            .delete(url + oldData.codUnidadeMedida)
+            .delete(url + oldData.codCNPJ)
                 .then(res => console.log(res.data));
             setEntries({ ...entries, data });
         }, 600);

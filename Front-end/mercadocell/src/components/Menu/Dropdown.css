@@ -10,6 +10,8 @@
 .dropdown-menu li {
   background: #1888ff;
   cursor: pointer;
+  position:relative;
+  z-index:999;
 }
 
 .dropdown-menu li:hover {

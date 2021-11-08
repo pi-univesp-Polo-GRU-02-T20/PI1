@@ -17,7 +17,8 @@
     height: 300px;
     width: 400px;
     border-top: 5px solid cornflowerblue;
-    border-radius: 0px;;
+    border-radius: 0px;
+    margin-top: 75px;
   }
   
 .tipopagamento_titulo{

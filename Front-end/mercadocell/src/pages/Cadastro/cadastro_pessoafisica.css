@@ -14,10 +14,12 @@
     }
   
   .pessoafisica_form{
+    margin-top: 200px;
     height: 500px;
     width: 700px;
     border-top: 5px solid cornflowerblue;
-    border-radius: 0px;;
+    border-radius: 0px;
+    margin-top: 75px;
   }
   
   .pessoafisica_titulo{

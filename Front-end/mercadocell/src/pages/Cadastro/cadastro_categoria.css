@@ -9,15 +9,16 @@
     background-repeat:repeat-y;
     background-attachment:scroll;
     display: flex;
-    height: 90vh;
   
     }
   
   .categoria_form{
+    margin-top: 200px;
     height: 300px;
     width: 400px;
     border-top: 5px solid cornflowerblue;
-    border-radius: 0px;;
+    border-radius: 0px;
+    margin-top: 75px;
   }
   
   .categoria_titulo{

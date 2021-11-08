@@ -4,39 +4,45 @@ import React, { useEffect, useState } from "react";
 import './consulta.css';
 import axios from "axios";
 
-export default function Consulta_UnidadeMedida() {
+export default function Consulta_pessoafisica() {
 
-    var url = "http://localhost:8080/unidadeMedida/"
+    var url = "http://localhost:8080/pessoaFisica/"
 
     const [entries, setEntries] = useState({
         data: [
             {
-                codUnidadeMedida: "",
-                nomeUnidadeMedida: "",
-                siglaUnidadeMedida: ""
+                codPessoa: "",
+                dataNascimento: "",
+                estadoNaturalidade: "",
+                nomePessoa: "",
+                tipoSexo:""
             }
         ]
     });
 
     const [state] = React.useState({
         columns: [
-            { title: "Código da Unidade de Medida", field: "codUnidadeMedida", editable:false},
-            { title: "Nome da Unidade de Medida", field: "nomeUnidadeMedida" },
-            { title: "Sigla da Unidade de Medida", field: "siglaUnidadeMedida" }
+            { title: "Código da Pessoa", field: "codPessoa", editable:false},
+            { title: "Data de Nascimento", field: "dataNascimento" },
+            { title: "Naturalidade", field: "estadoNaturalidade" },
+            { title: "Nome", field: "nomePessoa" },
+            { title: "Sexo", field: "tipoSexo" }
         ]
     });
 
     useEffect(() => {
         axios
-        .get("http://localhost:8080/unidadeMedida")
+        .get("http://localhost:8080/pessoaFisica")
         .then(response => {
         let data = [];
     response.data.forEach(el => {
       data.push(
         {
-        codUnidadeMedida: el.codUnidadeMedida,
-        nomeUnidadeMedida: el.nomeUnidadeMedida, 
-        siglaUnidadeMedida: el.siglaUnidadeMedida
+        codPessoa: el.codPessoa,
+        dataNascimento: el.dataNascimento, 
+        estadoNaturalidade: el.estadoNaturalidade,
+        nomePessoa: el.nomePessoa,
+        tipoSexo: el.tipoSexo
         }
     );
 });
@@ -51,7 +57,7 @@ export default function Consulta_UnidadeMedida() {
       <>
       <Navbar />
         <MaterialTable
-    title="Consulta de Unidade de Medida"
+    title="Consulta de Pessoa Física"
     data={entries.data}
     columns={state.columns}
     editable={{
@@ -62,9 +68,9 @@ export default function Consulta_UnidadeMedida() {
             const data = [...entries.data];
             data[data.indexOf(oldData)] = newData;
             axios
-                .put("http://localhost:8080/unidadeMedida", newData, {
+                .put("http://localhost:8080/pessoaFisica", newData, {
                     params: {
-                        codUnidadeMedida: entries.data[0].codUnidadeMedida
+                      codPessoa: entries.data[0].codPessoa
                     }
                 })
                 .then(res => console.log(res.data));
@@ -78,7 +84,7 @@ export default function Consulta_UnidadeMedida() {
             const data = [...entries.data];
             data.splice(data.indexOf(oldData), 1);
             axios
-            .delete(url + oldData.codUnidadeMedida)
+            .delete(url + oldData.codPessoa)
                 .then(res => console.log(res.data));
             setEntries({ ...entries, data });
         }, 600);

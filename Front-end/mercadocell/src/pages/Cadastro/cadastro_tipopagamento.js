@@ -2,10 +2,10 @@ import React from 'react';
 import Navbar from '../../components/Menu/Navbar';
 import { useForm } from "react-hook-form";
 import { ErrorMessage } from '@hookform/error-message';
-import './cadastro_tipoPagamento.css';
+import './cadastro_tipopagamento.css';
 import axios from 'axios';
 
-export default function Cadastro_tipoPagamento() {
+export default function Cadastro_tipopagamento() {
 
   const { register, handleSubmit, formState: { errors } } = useForm();
   const onSubmit = (data) => { 
