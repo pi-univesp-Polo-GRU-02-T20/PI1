@@ -2,11 +2,11 @@ import Navbar from '../../components/Menu/Navbar';
 import MaterialTable from "material-table";
 import React, { useEffect, useState } from "react";
 import './consulta.css';
-import axios from "axios";
+import  api  from '../../components/Services/api';
 
 export default function Consulta_pessoajuridica() {
 
-    var url = "http://localhost:8080/usuario/"
+    var url = "/usuario"
 
     const [entries, setEntries] = useState({
         data: [
@@ -33,8 +33,8 @@ export default function Consulta_pessoajuridica() {
     });
 
     useEffect(() => {
-        axios
-        .get("http://localhost:8080/usuario")
+        api
+        .get(url)
         .then(response => {
         let data = [];
     response.data.forEach(el => {
@@ -70,10 +70,10 @@ export default function Consulta_pessoajuridica() {
             resolve();
             const data = [...entries.data];
             data[data.indexOf(oldData)] = newData;
-            axios
-                .put("http://localhost:8080/usuario", newData, {
+            api
+                .put(url, newData, {
                     params: {
-                      codCNPJ: entries.data[0].codUsuario
+                      codUsuario: entries.data[0].codUsuario
                     }
                 })
                 .then(res => console.log(res.data));
@@ -86,8 +86,8 @@ export default function Consulta_pessoajuridica() {
             resolve();
             const data = [...entries.data];
             data.splice(data.indexOf(oldData), 1);
-            axios
-            .delete(url + oldData.codUsuario)
+            api
+            .delete(url + "/" + oldData.codUsuario)
                 .then(res => console.log(res.data));
             setEntries({ ...entries, data });
         }, 600);

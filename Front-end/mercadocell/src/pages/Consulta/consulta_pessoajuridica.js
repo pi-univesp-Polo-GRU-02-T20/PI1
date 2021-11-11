@@ -2,18 +2,17 @@ import Navbar from '../../components/Menu/Navbar';
 import MaterialTable from "material-table";
 import React, { useEffect, useState } from "react";
 import './consulta.css';
-import axios from "axios";
+import  api  from '../../components/Services/api';
 
 export default function Consulta_pessoajuridica() {
 
-    var url = "http://localhost:8080/pessoaJuridica/"
+    var url = "/pessoaJuridica"
 
     const [entries, setEntries] = useState({
         data: [
             {
-                codCNPJ: "",
                 codPessoa: "",
-                codPessoaJuridica: "",
+                codCNPJ: "",
                 nomePessoa: "",
                 nomeRazaoSocial:""
             }
@@ -22,25 +21,23 @@ export default function Consulta_pessoajuridica() {
 
     const [state] = React.useState({
         columns: [
-            { title: "CNPJ", field: "codCNPJ", editable:false},
-            { title: "Código da Pessoa", field: "codPessoa" },
-            { title: "Código da Pessoa Jurídica", field: "codPessoaJuridica" },
+            { title: "Código da Pessoa", field: "codPessoa", editable:false},
+            { title: "CNPJ", field: "codCNPJ" },
             { title: "Nome Pessoa", field: "nomePessoa" },
             { title: "Nome Razão Social", field: "nomeRazaoSocial" }
         ]
     });
 
     useEffect(() => {
-        axios
-        .get("http://localhost:8080/pessoaJuridica")
+        api
+        .get(url)
         .then(response => {
         let data = [];
     response.data.forEach(el => {
       data.push(
         {
+        codPessoa: el.codPessoa,  
         codCNPJ: el.codCNPJ,
-        codPessoa: el.codPessoa, 
-        codPessoaJuridica: el.codPessoaJuridica,
         nomePessoa: el.nomePessoa,
         nomeRazaoSocial: el.nomeRazaoSocial
         }
@@ -67,10 +64,10 @@ export default function Consulta_pessoajuridica() {
             resolve();
             const data = [...entries.data];
             data[data.indexOf(oldData)] = newData;
-            axios
-                .put("http://localhost:8080/pessoaJuridica", newData, {
+            api
+                .put(url, newData, {
                     params: {
-                      codCNPJ: entries.data[0].codCNPJ
+                      codPessoa: entries.data[0].codPessoa
                     }
                 })
                 .then(res => console.log(res.data));
@@ -83,8 +80,8 @@ export default function Consulta_pessoajuridica() {
             resolve();
             const data = [...entries.data];
             data.splice(data.indexOf(oldData), 1);
-            axios
-            .delete(url + oldData.codCNPJ)
+            api
+            .delete(url + "/" + oldData.codPessoa)
                 .then(res => console.log(res.data));
             setEntries({ ...entries, data });
         }, 600);

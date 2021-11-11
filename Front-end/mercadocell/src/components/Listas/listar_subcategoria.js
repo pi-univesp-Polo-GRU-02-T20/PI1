@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Api from '../Services/Api'
+import api from '../Services/api'
 
   class Listar_subcategoria extends Component {
 
@@ -8,7 +8,7 @@ import Api from '../Services/Api'
     }
   
     async componentDidMount() {
-      const response = await Api.get('/subCategoria');
+      const response = await api.get('/subCategoria');
   
       this.setState({ subcategorias: response.data });
     }

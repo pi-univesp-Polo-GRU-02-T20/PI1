@@ -3,14 +3,14 @@ import Navbar from '../../components/Menu/Navbar';
 import { useForm } from "react-hook-form";
 import { ErrorMessage } from '@hookform/error-message';
 import './cadastro_tipopagamento.css';
-import axios from 'axios';
+import  api  from '../../components/Services/api';
 
 export default function Cadastro_tipopagamento() {
 
   const { register, handleSubmit, formState: { errors } } = useForm();
   const onSubmit = (data) => { 
     console.log(data);
-    axios.post("http://localhost:8080/tipoPagamento", data);
+    api.post("http://localhost:8080/tipoPagamento", data);
   }
 
   return (

@@ -2,11 +2,11 @@ import Navbar from '../../components/Menu/Navbar';
 import MaterialTable from "material-table";
 import React, { useEffect, useState } from "react";
 import './consulta.css';
-import axios from "axios";
+import  api  from '../../components/Services/api';
 
 export default function ReportTable() {
 
-    var url = "http://localhost:8080/categoria/"
+    var url = "/categoria"
 
     const [entries, setEntries] = useState({
         data: [
@@ -25,8 +25,8 @@ export default function ReportTable() {
     });
 
     useEffect(() => {
-        axios
-        .get("http://localhost:8080/categoria")
+        api
+        .get(url)
         .then(response => {
         let data = [];
     response.data.forEach(el => {
@@ -58,8 +58,8 @@ export default function ReportTable() {
             resolve();
             const data = [...entries.data];
             data[data.indexOf(oldData)] = newData;
-            axios
-                .put("http://localhost:8080/categoria", newData, {
+            api
+                .put(url, newData, {
                     params: {
                         codCategoria: entries.data[0].codCategoria
                     }
@@ -74,8 +74,8 @@ export default function ReportTable() {
             resolve();
             const data = [...entries.data];
             data.splice(data.indexOf(oldData), 1);
-            axios
-            .delete(url + oldData.codCategoria)
+            api
+            .delete(url + "/" + oldData.codCategoria)
                 .then(res => console.log(res.data));
             setEntries({ ...entries, data });
         }, 600);

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Api from '../Services/Api'
+import api from '../Services/api'
 
   class Listar_unidadedemedida extends Component {
 
@@ -8,7 +8,7 @@ import Api from '../Services/Api'
     }
   
     async componentDidMount() {
-      const response = await Api.get('/unidadeMedida');
+      const response = await api.get('/unidadeMedida');
   
       this.setState({ unidadesdemedida: response.data });
     }
@@ -20,7 +20,9 @@ import Api from '../Services/Api'
       return (
       <>
               {unidadesdemedida.map(filme => (
-              <option id="nomeUnidadeMedida" name="nomeUnidadeMedida" value={filme.codUnidadeMedida} key={filme.codUnidadeMedida}>{filme.nomeUnidadeMedida}</option>
+              <option id="nomeUnidadeMedida" name="nomeUnidadeMedida" value={filme.codUnidadeMedida} key={filme.codUnidadeMedida}>
+                {filme.nomeUnidadeMedida}
+              </option>
               ))}
       </>
         );

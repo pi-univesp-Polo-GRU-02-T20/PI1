@@ -3,14 +3,14 @@ import Navbar from '../../components/Menu/Navbar';
 import { useForm } from "react-hook-form";
 import { ErrorMessage } from '@hookform/error-message';
 import './cadastro_pessoafisica.css';
-import axios from 'axios';
+import  api  from '../../components/Services/api';
 
 export default function Cadastro_pessoafisica() {
 
   const { register, handleSubmit, formState: { errors } } = useForm();
   const onSubmit = (data) => { 
     console.log(data);
-    axios.post("http://localhost:8080/pessoaFisica");
+    api.post("/pessoaFisica", data);
   }
 
   return (
@@ -29,12 +29,12 @@ export default function Cadastro_pessoafisica() {
 
         <div className="pessoafisica_campo">
 
-          <label htmlFor="nomeUnidadedeMedida"> Nome </label>
+          <label htmlFor="nomePessoa"> Nome </label>
           <input 
                  type="text" 
-                 id="nomeUnidadedemedida" 
-                 name="nomeUnidadedemedida"
-                 {...register("nomeUnidadedemedida", {
+                 id="nomePessoa" 
+                 name="nomePessoa"
+                 {...register("nomePessoa", {
                   required: 'Preenchimento Obrigatório',
                   minLength: {
                     value: 2,
@@ -43,7 +43,7 @@ export default function Cadastro_pessoafisica() {
                 })}
            />
         
-        <ErrorMessage errors={errors} name="nomeUnidadedemedida">
+        <ErrorMessage errors={errors} name="nomePessoa">
         {({ messages }) => messages && Object.entries(messages).map(([type, message]) => ( <p key={type}>{message}</p>))}
         </ErrorMessage>
 
@@ -55,14 +55,14 @@ export default function Cadastro_pessoafisica() {
 
       <div className="pessoafisica_linha">
 
-        <div className="pessoafisica_campo">
+        <div className="pessoafisica_campo2">
 
-          <label htmlFor="nomedacategoria"> Data de Nascimento </label>
-          <select 
-                 type="text" 
-                 id="siglaUnidadedemedida" 
-                 name="siglaUnidadedemedida"
-                 {...register("siglaUnidadedemedida", {
+          <label htmlFor="dataNascimento"> Data de Nascimento </label>
+          <input 
+                 type="date" 
+                 id="dataNascimento" 
+                 name="dataNascimento"
+                 {...register("dataNascimento", {
                   required: 'Preenchimento Obrigatório',
                   minLength: {
                     value: 2,
@@ -71,20 +71,20 @@ export default function Cadastro_pessoafisica() {
                 })}
            />
         
-        <ErrorMessage errors={errors} name="nomeUnidadedemedida">
+        <ErrorMessage errors={errors} name="dataNascimento">
         {({ messages }) => messages && Object.entries(messages).map(([type, message]) => ( <p key={type}>{message}</p>))}
         </ErrorMessage>
 
         </div>
 
-        <div className="pessoafisica_campo">
+        <div className="pessoafisica_campo2">
 
-        <label htmlFor="nomeUnidadedeMedida"> Naturalidade </label>
-          <select 
+        <label htmlFor="estadoNaturalidade"> Naturalidade </label>
+          <input 
                  type="text" 
-                 id="nomeUnidadedemedida" 
-                 name="nomeUnidadedemedida"
-                 {...register("nomeUnidadedemedida", {
+                 id="estadoNaturalidade" 
+                 name="estadoNaturalidade"
+                 {...register("estadoNaturalidade", {
                   required: 'Preenchimento Obrigatório',
                   minLength: {
                     value: 2,
@@ -93,7 +93,7 @@ export default function Cadastro_pessoafisica() {
                 })}
            />
         
-        <ErrorMessage errors={errors} name="nomeUnidadedemedida">
+        <ErrorMessage errors={errors} name="estadoNaturalidade">
         {({ messages }) => messages && Object.entries(messages).map(([type, message]) => ( <p key={type}>{message}</p>))}
         </ErrorMessage>
 
@@ -104,23 +104,18 @@ export default function Cadastro_pessoafisica() {
 
         <div className="pessoafisica_campo">
 
-          <label htmlFor="nomeUnidadedeMedida">  Sexo: </label>
+          <label htmlFor="tipoSexo">  Sexo: </label>
           
           <div className="radio">
           
           <input 
                  type="radio" 
-                 id="nomeUnidadedemedida" 
-                 name="radio"
-                 {...register("nomeUnidadedemedida", {
-                  required: 'Preenchimento Obrigatório',
-                  minLength: {
-                    value: 2,
-                    message: 'No minimo dois caracteres' 
-                  }
-                })}
+                 id="tipoSexo" 
+                 name="tipoSexo"
+                 value="M"
+                 {...register("tipoSexo")}
            />
-           <label htmlFor="nomeUnidadededMedida"> Masculino </label>
+           <label htmlFor="tipoSexo"> Masculino </label>
 
         </div>
         
@@ -128,17 +123,12 @@ export default function Cadastro_pessoafisica() {
         
           <input 
                  type="radio" 
-                 id="nomeUnidadedemedida" 
-                 name="radio"
-                 {...register("nomeUnidadedemedida", {
-                  required: 'Preenchimento Obrigatório',
-                  minLength: {
-                    value: 2,
-                    message: 'No minimo dois caracteres' 
-                  }
-                })}
+                 id="tipoSexo" 
+                 name="tipoSexo"
+                 value="F"
+                 {...register("tipoSexo")}
            />
-           <label htmlFor="nomeUnidadedeMedida"> Feminino </label>
+           <label htmlFor="tipoSexo"> Feminino </label>
         </div>
 
         </div>

@@ -3,14 +3,14 @@ import Navbar from '../../components/Menu/Navbar';
 import { useForm } from "react-hook-form";
 import { ErrorMessage } from '@hookform/error-message';
 import './cadastro_usuario.css';
-import axios from 'axios';
+import  api  from '../../components/Services/api';
 
 export default function Cadastro_usuario() {
 
   const { register, handleSubmit, formState: { errors } } = useForm();
   const onSubmit = (data) => { 
     console.log(data);
-    axios.post("http://localhost:8080/pessoaJuridica");
+    api.post("/usuario", data);
   }
 
   return (
@@ -27,14 +27,14 @@ export default function Cadastro_usuario() {
 
       <div className="usuario_linha">
 
-        <div className="usuario_campo">
+        <div className="usuario_campo2">
 
-          <label htmlFor="nomeUnidadedeMedida"> Nome </label>
+          <label htmlFor="nomePessoa"> Nome </label>
           <input 
                  type="text" 
-                 id="nomeUnidadedemedida" 
-                 name="nomeUnidadedemedida"
-                 {...register("nomeUnidadedemedida", {
+                 id="nomePessoa" 
+                 name="nomePessoa"
+                 {...register("nomePessoa", {
                   required: 'Preenchimento Obrigatório',
                   minLength: {
                     value: 2,
@@ -43,7 +43,28 @@ export default function Cadastro_usuario() {
                 })}
            />
         
-        <ErrorMessage errors={errors} name="nomeUnidadedemedida">
+        <ErrorMessage errors={errors} name="nomePessoa">
+        {({ messages }) => messages && Object.entries(messages).map(([type, message]) => ( <p key={type}>{message}</p>))}
+        </ErrorMessage>
+
+        </div>
+        <div className="usuario_campo2">
+
+          <label htmlFor="codPessoa"> Código de Pessoa </label>
+          <input 
+                 type="text" 
+                 id="codPessoa" 
+                 name="codPessoa"
+                 {...register("codPessoa", {
+                  required: 'Preenchimento Obrigatório',
+                  minLength: {
+                    value: 2,
+                    message: 'No minimo dois caracteres' 
+                  }
+                })}
+           />
+        
+        <ErrorMessage errors={errors} name="codPessoa">
         {({ messages }) => messages && Object.entries(messages).map(([type, message]) => ( <p key={type}>{message}</p>))}
         </ErrorMessage>
 
@@ -53,14 +74,14 @@ export default function Cadastro_usuario() {
 
       <div className="usuario_linha">
 
-        <div className="usuario_campo">
+        <div className="usuario_campo2">
 
-          <label htmlFor="nomedacategoria"> Login </label>
+          <label htmlFor="login"> Login </label>
           <input 
                  type="text" 
-                 id="siglaUnidadedemedida" 
-                 name="siglaUnidadedemedida"
-                 {...register("siglaUnidadedemedida", {
+                 id="login" 
+                 name="login"
+                 {...register("login", {
                   required: 'Preenchimento Obrigatório',
                   minLength: {
                     value: 2,
@@ -69,23 +90,20 @@ export default function Cadastro_usuario() {
                 })}
            />
         
-        <ErrorMessage errors={errors} name="nomeUnidadedemedida">
+        <ErrorMessage errors={errors} name="login">
         {({ messages }) => messages && Object.entries(messages).map(([type, message]) => ( <p key={type}>{message}</p>))}
         </ErrorMessage>
 
         </div>
-        </div>
 
-        <div className="usuario_linha">
+        <div className="usuario_campo2">
 
-        <div className="usuario_campo">
-
-        <label htmlFor="nomeUnidadedeMedida"> Senha </label>
+        <label htmlFor="senha"> Senha </label>
           <input 
                  type="text" 
-                 id="nomeUnidadedemedida" 
-                 name="nomeUnidadedemedida"
-                 {...register("nomeUnidadedemedida", {
+                 id="senha" 
+                 name="senha"
+                 {...register("senha", {
                   required: 'Preenchimento Obrigatório',
                   minLength: {
                     value: 2,
@@ -94,7 +112,7 @@ export default function Cadastro_usuario() {
                 })}
            />
         
-        <ErrorMessage errors={errors} name="nomeUnidadedemedida">
+        <ErrorMessage errors={errors} name="senha">
         {({ messages }) => messages && Object.entries(messages).map(([type, message]) => ( <p key={type}>{message}</p>))}
         </ErrorMessage>
 

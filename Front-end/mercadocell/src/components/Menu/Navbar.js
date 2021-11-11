@@ -83,12 +83,7 @@ function Navbar() {
             onMouseEnter={onMouseEnter2}
             onMouseLeave={onMouseLeave}
           >
-            <Link
-              to='/services'
-              id='x'
-              className='nav-links'
-              onClick={closeMobileMenu}
-            >
+            <Link to='/' className='nav-links' onClick={closeMobileMenu}>
               Consulta <i className='fas fa-caret-down' />
             </Link>
             {dropdown2 && <Dropdown2 />}
@@ -97,13 +92,8 @@ function Navbar() {
               onMouseEnter={onMouseEnter3}
               onMouseLeave={onMouseLeave}
               >
-            <Link
-              to='/products'
-              id='y'
-              className='nav-links'
-              onClick={closeMobileMenu}
-            >
-              Movimentação <i className='fas fa-caret-down' />
+            <Link to='/' className='nav-links' onClick={closeMobileMenu}>
+              Operação <i className='fas fa-caret-down' />
             </Link>
             {dropdown3 && <Dropdown3 />}
           </li>

@@ -1,7 +1,6 @@
 import React, { useContext } from 'react';
 import { Route, Redirect } from 'react-router-dom';
 import StoreContext from '../../Store/Context';
-import Navbar from '../../Menu/Navbar'
 
 const RoutesPrivate = ({ component: Component, ...rest}) => {
   const { token } = useContext(StoreContext);

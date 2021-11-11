@@ -24,12 +24,13 @@ import Consulta_produto from './Consulta/consulta_produto';
 import Consulta_pessoafisica from './Consulta/consulta_pessoafisica';
 import Consulta_pessoajuridica from './Consulta/consulta_pessoajuridica';
 import Consulta_usuario from './Consulta/consulta_usuario';
-import Consulta_tipopagamento from './Consulta/consulta_tipopagamento.js';
+//import Consulta_tipopagamento from './Consulta/consulta_tipopagamento.js';
 
 import Movimentacao_compra from './Movimentacao/movimentacao_compra';
 import Movimentacao_venda from './Movimentacao/movimentacao_venda';
 import Movimentacao_recebimento from './Movimentacao/movimentacao_recebimento';
 import Movimentacao_pagamento from './Movimentacao/movimentacao_pagamento';
+import Consulta_operacao from './Consulta/consulta_operacao';
 
 const PagesRoot = () => (
     <Router>
@@ -54,7 +55,7 @@ const PagesRoot = () => (
           <RoutesPrivate path='/consulta-pessoafisica' component={Consulta_pessoafisica} />
           <RoutesPrivate path='/consulta-pessoajuridica' component={Consulta_pessoajuridica} />
           <RoutesPrivate path='/consulta-usuario' component={Consulta_usuario} />
-          <RoutesPrivate path='/consulta-tipopagamento' component={Consulta_tipopagamento} />
+          <RoutesPrivate path='/consulta-operacao' component={Consulta_operacao} />
           
           <RoutesPrivate path='/movimentacao-compra' component={Movimentacao_compra} />
           <RoutesPrivate path='/movimentacao-venda' component={Movimentacao_venda} />

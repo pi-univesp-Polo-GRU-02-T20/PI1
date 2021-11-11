@@ -1,8 +1,7 @@
-import React, { useState, useContext, useEffect } from 'react'
+import React, { useState, useContext } from 'react'
 import { useHistory } from 'react-router-dom';
 import StoreContext from '../../Store/Context';
 import UIButton from '../../UI/Button/Button';
-import axios from 'axios';
 
 import { HiUser, HiLockClosed } from "react-icons/hi";
 

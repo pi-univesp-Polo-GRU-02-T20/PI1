@@ -3,14 +3,14 @@ import Navbar from '../../components/Menu/Navbar';
 import { useForm } from "react-hook-form";
 import { ErrorMessage } from '@hookform/error-message';
 import './cadastro_unidadedemedida.css';
-import axios from 'axios';
+import  api  from '../../components/Services/api';
 
 export default function Cadastro_categoria() {
 
   const { register, handleSubmit, formState: { errors } } = useForm();
-  const onSubmit = (data) => { 
+  const onSubmit = (data) => {
     console.log(data);
-    axios.post("http://localhost:8080/UnidadedeMedida");
+    api.post("/UnidadeMedida");
   }
 
   return (
@@ -30,12 +30,12 @@ export default function Cadastro_categoria() {
 
         <div className="udmedida_campo">
 
-          <label htmlFor="nomeUnidadedeMedida"> Nome da Unidade de Medida</label>
+          <label htmlFor="nomeUnidadeMedida"> Nome da Unidade de Medida</label>
           <input 
                  type="text" 
-                 id="nomeUnidadedemedida" 
-                 name="nomeUnidadedemedida"
-                 {...register("nomeUnidadedemedida", {
+                 id="nomeUnidadeMedida" 
+                 name="nomeUnidadeMedida"
+                 {...register("nomeUnidadeMedida", {
                   required: 'Preenchimento Obrigatório',
                   minLength: {
                     value: 2,
@@ -44,7 +44,7 @@ export default function Cadastro_categoria() {
                 })}
            />
         
-        <ErrorMessage errors={errors} name="nomeUnidadedemedida">
+        <ErrorMessage errors={errors} name="nomeUnidadeMedida">
         {({ messages }) => messages && Object.entries(messages).map(([type, message]) => ( <p key={type}>{message}</p>))}
         </ErrorMessage>
 
@@ -56,12 +56,12 @@ export default function Cadastro_categoria() {
 
         <div className="udmedida_campo">
 
-          <label htmlFor="nomedacategoria"> Sigla da Unidade de Medida</label>
+          <label htmlFor="siglaUnidadeMedida"> Sigla da Unidade de Medida</label>
           <input 
                  type="text" 
-                 id="siglaUnidadedemedida" 
-                 name="siglaUnidadedemedida"
-                 {...register("siglaUnidadedemedida", {
+                 id="siglaUnidadeMedida" 
+                 name="siglaUnidadeMedida"
+                 {...register("siglaUnidadeMedida", {
                   required: 'Preenchimento Obrigatório',
                   minLength: {
                     value: 2,
@@ -70,7 +70,7 @@ export default function Cadastro_categoria() {
                 })}
            />
         
-        <ErrorMessage errors={errors} name="nomeUnidadedemedida">
+        <ErrorMessage errors={errors} name="siglaUnidadeMedida">
         {({ messages }) => messages && Object.entries(messages).map(([type, message]) => ( <p key={type}>{message}</p>))}
         </ErrorMessage>
 

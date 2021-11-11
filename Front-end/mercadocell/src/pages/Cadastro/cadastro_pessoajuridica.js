@@ -3,14 +3,14 @@ import Navbar from '../../components/Menu/Navbar';
 import { useForm } from "react-hook-form";
 import { ErrorMessage } from '@hookform/error-message';
 import './cadastro_pessoajuridica.css';
-import axios from 'axios';
+import  api  from '../../components/Services/api';
 
 export default function Cadastro_pessoajuridica() {
 
   const { register, handleSubmit, formState: { errors } } = useForm();
   const onSubmit = (data) => { 
     console.log(data);
-    axios.post("http://localhost:8080/pessoaJuridica");
+    api.post("/pessoaJuridica", data);
   }
 
   return (
@@ -29,12 +29,12 @@ export default function Cadastro_pessoajuridica() {
 
         <div className="pessoajuridica_campo">
 
-          <label htmlFor="nomeUnidadedeMedida"> Nome </label>
+          <label htmlFor="nomePessoa"> Nome </label>
           <input 
                  type="text" 
-                 id="nomeUnidadedemedida" 
-                 name="nomeUnidadedemedida"
-                 {...register("nomeUnidadedemedida", {
+                 id="nomePessoa" 
+                 name="nomePessoa"
+                 {...register("nomePessoa", {
                   required: 'Preenchimento Obrigatório',
                   minLength: {
                     value: 2,
@@ -43,7 +43,7 @@ export default function Cadastro_pessoajuridica() {
                 })}
            />
         
-        <ErrorMessage errors={errors} name="nomeUnidadedemedida">
+        <ErrorMessage errors={errors} name="nomePessoa">
         {({ messages }) => messages && Object.entries(messages).map(([type, message]) => ( <p key={type}>{message}</p>))}
         </ErrorMessage>
 
@@ -55,12 +55,12 @@ export default function Cadastro_pessoajuridica() {
 
         <div className="pessoajuridica_campo">
 
-          <label htmlFor="nomedacategoria"> Razão Social </label>
+          <label htmlFor="nomeRazaoSocial"> Razão Social </label>
           <input 
                  type="text" 
-                 id="siglaUnidadedemedida" 
-                 name="siglaUnidadedemedida"
-                 {...register("siglaUnidadedemedida", {
+                 id="nomeRazaoSocial" 
+                 name="nomeRazaoSocial"
+                 {...register("nomeRazaoSocial", {
                   required: 'Preenchimento Obrigatório',
                   minLength: {
                     value: 2,
@@ -69,7 +69,7 @@ export default function Cadastro_pessoajuridica() {
                 })}
            />
         
-        <ErrorMessage errors={errors} name="nomeUnidadedemedida">
+        <ErrorMessage errors={errors} name="nomeRazaoSocial">
         {({ messages }) => messages && Object.entries(messages).map(([type, message]) => ( <p key={type}>{message}</p>))}
         </ErrorMessage>
 
@@ -80,12 +80,12 @@ export default function Cadastro_pessoajuridica() {
 
         <div className="pessoajuridica_campo">
 
-        <label htmlFor="nomeUnidadedeMedida"> CNPJ </label>
+        <label htmlFor="codCNPJ"> CNPJ </label>
           <input 
-                 type="text" 
-                 id="nomeUnidadedemedida" 
-                 name="nomeUnidadedemedida"
-                 {...register("nomeUnidadedemedida", {
+                 type="number" 
+                 id="codCNPJ" 
+                 name="codCNPJ"
+                 {...register("codCNPJ", {
                   required: 'Preenchimento Obrigatório',
                   minLength: {
                     value: 2,
@@ -94,7 +94,7 @@ export default function Cadastro_pessoajuridica() {
                 })}
            />
         
-        <ErrorMessage errors={errors} name="nomeUnidadedemedida">
+        <ErrorMessage errors={errors} name="codCNPJ">
         {({ messages }) => messages && Object.entries(messages).map(([type, message]) => ( <p key={type}>{message}</p>))}
         </ErrorMessage>
 

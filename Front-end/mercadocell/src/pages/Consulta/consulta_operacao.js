@@ -4,27 +4,39 @@ import React, { useEffect, useState } from "react";
 import './consulta.css';
 import  api  from '../../components/Services/api';
 
-export default function Consulta_subcategoria() {
+export default function Consulta_operacao() {
 
-    var url = "/subCategoria"
+    var url = "/operacao"
 
     const [entries, setEntries] = useState({
         data: [
             {
-                codSubCategoria: "",
-                nomeSubCategoria: "",
-                codCategoria: "",
-                nomeCategoria: ""
+                codNotaFiscal: "",
+                codOperacao: "",
+                dataOperacao: "",
+                pago: "",
+                nomePessoa: "",
+                tipoOperacao: "",
+                nomeTipoPagamento: "",
+                tipoStatusOperacao: "",
+                quantidadeParcela: "",
+                valorTotal:""
             }
         ]
     });
 
     const [state] = React.useState({
         columns: [
-            { title: "Código da Subcategoria", field: "codSubCategoria", editable:false},
-            { title: "Nome da Subcategoria", field: "nomeSubCategoria" },
-            { title: "Código da Categoria", field: "codCategoria", editable: false},
-            { title: "Nome da Categoria", field: "nomeCategoria" }
+
+            { title: "Código da Operacão", field: "codOperacao", editable:false },
+            { title: "Código da NF", field: "codNotaFiscal" },
+            { title: "Data da Operação", field: "dataOperacao" },
+            { title: "Nome da Pessoa", field: "nomeCategoria" },
+            { title: "Tipo de Operação", field: "tipoOperacao" },
+            { title: "Tipo de Pagamento", field: "nomeTipoPagamento" },
+            { title: "Status Op", field: "tipoStatusOperacao" },
+            { title: "Qtd. Parcelas", field: "quantidadeParcela" },
+            { title: "Total", field: "valorTotal" }
         ]
     });
 
@@ -36,10 +48,20 @@ export default function Consulta_subcategoria() {
     response.data.forEach(el => {
       data.push(
         {
-        codSubCategoria: el.codSubCategoria,
-        nomeSubCategoria: el.nomeSubCategoria, 
-        codCategoria: el.categoria.codCategoria,
-        nomeCategoria: el.categoria.nomeCategoria
+            
+        codNotaFiscal: el.codNotaFiscal,
+        codOperacao: el.codOperacao,
+        dataOperacao: el.dataOperacao,
+        pago: el.pago,
+        codPessoa: el.pessoa.codPessoa,
+        nomePessoa: el.pessoa.nomePessoa,
+        tipoOperacao: el.tipoOperacao,
+        codTipoPagamento: el.tipoPagamento.codTipoPagamento,
+        nomeTipoPagamento: el.tipoPagamento.nomeTipoPagamento,
+        tipoStatusOperacao: el.tipoStatusOperacao,
+        quantidadeParcela: el.quantidadeParcela,
+        valorTotal: el.valorTotal
+    
         }
     );
 });
@@ -54,7 +76,7 @@ export default function Consulta_subcategoria() {
       <>
       <Navbar />
         <MaterialTable
-    title="Consulta de Subcategoria"
+    title="Consulta de Operação"
     data={entries.data}
     columns={state.columns}
     editable={{
@@ -67,7 +89,7 @@ export default function Consulta_subcategoria() {
             api
                 .put(url, newData, {
                     params: {
-                        codSubCategoria: entries.data[0].codSubCategoria
+                        codOperacao: entries.data[0].codOperacao
                     }
                 })
                 .then(res => console.log(res.data));
@@ -81,7 +103,7 @@ export default function Consulta_subcategoria() {
             const data = [...entries.data];
             data.splice(data.indexOf(oldData), 1);
             api
-            .delete(url + "/" + oldData.codSubCategoria)
+            .delete(url + "/" + oldData.codOperacao)
                 .then(res => console.log(res.data));
             setEntries({ ...entries, data });
         }, 600);

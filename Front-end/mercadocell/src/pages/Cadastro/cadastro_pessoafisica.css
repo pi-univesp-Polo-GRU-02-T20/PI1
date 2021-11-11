@@ -35,14 +35,7 @@
     margin-bottom: 20px;
   }
   
-  .pessoafisica_linha3{
-    display: flex;
-    flex-direction: row;
-    font-size: 15px;
-    margin-bottom: 20px;
-    margin-right: 260px;
-  }
-    
+  
   .pessoafisica_campo{
     display: flex;
     flex-direction: column;
@@ -64,6 +57,45 @@
     height: 36px;
     width: 500px;
   }
+
+
+
+
+
+
+  .pessoafisica_campo2{
+    display: flex;
+    flex-direction: column;
+    font-size: 15px;
+    margin-inline: 10px;
+  }
+    
+  .pessoafisica_campo2 label {
+    margin-bottom: 5px;
+    font-size: 15px;
+    color:#555555;
+  }
+  
+  .pessoafisica_campo2 input {
+    border: 2px solid #AAAAAA;
+    border-radius: 4px;
+    background: #fff;
+    padding: 0 10px;
+    height: 36px;
+    width: 240px;
+  }
+  
+
+
+
+
+
+
+
+
+
+
+
   
   .anexarimagem {
     background-color: #125ec0; 
@@ -78,25 +110,6 @@
     margin-right: 20px;
     margin-bottom: 0px;
     margin-top: 0px;
-  }
-  
-  .pessoafisica_campo select {
-    border: 2px solid #AAAAAA;
-    border-radius: 4px;
-    background: #fff;
-    padding: 0 10px;
-    height: 36px;
-    width: 240px;
-  }
-  
-  .pessoafisica_campo textarea {
-    border: 2px solid #AAAAAA;
-    border-radius: 4px;
-    background: #fff;
-    padding: 0 10px;
-    resize: none;
-    height: 72px;
-    width: 500px;
   }
 
 .radio{

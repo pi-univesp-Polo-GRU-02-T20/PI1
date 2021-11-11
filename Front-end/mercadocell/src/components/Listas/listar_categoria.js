@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Api from '../Services/Api'
+import api from '../Services/api'
 
   class Listar_categoria extends Component {
 
@@ -8,7 +8,7 @@ import Api from '../Services/Api'
     }
   
     async componentDidMount() {
-      const response = await Api.get('/categoria');
+      const response = await api.get('/categoria');
   
       this.setState({ categorias: response.data });
     }
@@ -20,7 +20,9 @@ import Api from '../Services/Api'
       return (
       <>
               {categorias.map(filme => (
-              <option id="nomeCategoria" name="nomeCategoria" value={filme.codCategoria} key={filme.codCategoria}>{filme.nomeCategoria}</option>
+              <option id="nomeCategoria" name="nomeCategoria" value={filme.codCategoria} key={filme.codCategoria}>
+                {filme.nomeCategoria}
+              </option>
               ))}
       </>
         );

@@ -3,7 +3,7 @@ import Navbar from '../../components/Menu/Navbar';
 import { useForm } from "react-hook-form";
 import { ErrorMessage } from '@hookform/error-message';
 import './cadastro_produto.css';
-import axios from 'axios';
+import  api  from '../../components/Services/api';
 import Listar_categoria from '../../components/Listas/listar_categoria';
 import Listar_subcategoria from '../../components/Listas/listar_subcategoria';
 import Listar_unidadedemedida from '../../components/Listas/listar_unidadedemedida';
@@ -13,7 +13,7 @@ export default function Cadastro_produto() {
   const { register, handleSubmit, formState: { errors } } = useForm();
   const onSubmit = (data) => { 
     console.log(data);
-    axios.post("http://localhost:8080/produto", data);
+    api.post("/produto", data);
   }
 
   return (
@@ -37,7 +37,7 @@ export default function Cadastro_produto() {
                  type="text" 
                  id="nomeProduto" 
                  name="nomeProduto"
-                 {...register("categoriaProduto", {
+                 {...register("nomeProduto", {
                   required: 'Preenchimento Obrigatório',
                   minLength: {
                     value: 2,
@@ -58,12 +58,12 @@ export default function Cadastro_produto() {
 
       <div className="produto_campo">
 
-          <label htmlFor="nomeCategoria">Categoria</label>
+          <label htmlFor="subCategoria.categoria.codCategoria">Categoria</label>
           <select 
                  type="text" 
-                 id="nomeCategoria" 
-                 name="nomeCategoria"
-                 {...register("nomeCategoria", {
+                 id="subCategoria.categoria.codCategoria" 
+                 name="subCategoria.categoria.codCategoria"
+                 {...register("subCategoria.categoria.codCategoria", {
                   required: 'Preenchimento Obrigatório',
                   minLength: {
                     value: 2,
@@ -74,7 +74,7 @@ export default function Cadastro_produto() {
              <Listar_categoria />
           </select>
                              
-        <ErrorMessage errors={errors} name="nomeCategoria">
+        <ErrorMessage errors={errors} name="subCategoria.categoria.codCategoria">
         {({ messages }) => messages && Object.entries(messages).map(([type, message]) => ( <p key={type}>{message}</p>))}
         </ErrorMessage>
 
@@ -82,12 +82,12 @@ export default function Cadastro_produto() {
 
       <div className="produto_campo">
 
-<label htmlFor="nomeSubCategoria">Subcategoria</label>
+<label htmlFor="subCategoria.codSubCategoria">Subcategoria</label>
 <select 
        type="text" 
-       id="nomeSubCategoria" 
-       name="nomeSubCategoria"
-       {...register("nomeSubCategoria", {
+       id="subCategoria.codSubCategoria" 
+       name="subCategoria.codSubCategoria"
+       {...register("subCategoria.codSubCategoria", {
         required: 'Preenchimento Obrigatório',
         minLength: {
           value: 2,
@@ -98,7 +98,7 @@ export default function Cadastro_produto() {
    <Listar_subcategoria />
 </select>
 
-<ErrorMessage errors={errors} name="nomeSubCategoria">
+<ErrorMessage errors={errors} name="subCategoria.codSubCategoria">
 {({ messages }) => messages && Object.entries(messages).map(([type, message]) => ( <p key={type}>{message}</p>))}
 </ErrorMessage>
 
@@ -111,12 +111,12 @@ export default function Cadastro_produto() {
 
       <div className="produto_campo">
 
-          <label htmlFor="nomeCategoria">Unidade de Medida</label>
+          <label htmlFor="codUnidadeMedida">Unidade de Medida</label>
           <select 
                  type="text" 
-                 id="nomeCategoria" 
-                 name="nomeCategoria"
-                 {...register("nomeCategoria", {
+                 id="codUnidadeMedida" 
+                 name="codUnidadeMedida"
+                 {...register("codUnidadeMedida", {
                   required: 'Preenchimento Obrigatório',
                   minLength: {
                     value: 2,
@@ -127,7 +127,7 @@ export default function Cadastro_produto() {
              <Listar_unidadedemedida />
           </select>
                              
-        <ErrorMessage errors={errors} name="nomeCategoria">
+        <ErrorMessage errors={errors} name="codUnidadeMedida">
         {({ messages }) => messages && Object.entries(messages).map(([type, message]) => ( <p key={type}>{message}</p>))}
         </ErrorMessage>
 

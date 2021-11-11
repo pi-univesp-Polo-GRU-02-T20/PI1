@@ -14,11 +14,6 @@ const MenuItems = [
     cName: 'dropdown-link'
   },
   {
-    title: 'Recebimento',
-    path: '/movimentacao-recebimento',
-    cName: 'dropdown-link'
-  },
-  {
     title: 'Pagamento',
     path: '/movimentacao-pagamento',
     cName: 'dropdown-link'

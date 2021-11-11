@@ -3,7 +3,7 @@ import Navbar from '../../components/Menu/Navbar';
 import { useForm } from "react-hook-form";
 import { ErrorMessage } from '@hookform/error-message';
 import './cadastro_subcategoria.css';
-import axios from 'axios';
+import  api  from '../../components/Services/api';
 import Listar_categoria from '../../components/Listas/listar_categoria';
 
 export default function Cadastro_subcategoria() {
@@ -11,7 +11,7 @@ export default function Cadastro_subcategoria() {
   const { register, handleSubmit, formState: { errors } } = useForm();
   const onSubmit = (data) => { 
     console.log(data);
-    axios.post("http://localhost:8080/subCategoria", data);
+    api.post("/subCategoria", data);
   }
 
   return (
@@ -30,23 +30,20 @@ export default function Cadastro_subcategoria() {
         <div className="subCategoria_linha">
         <div className="subCategoria_campo">
 
-          <label htmlFor="selecionarCategoria"> Categoria </label>
+          <label htmlFor="categoria.nomeCategoria"> Categoria </label>
           <select 
                  type="text" 
-                 id="selecionarCategoria" 
-                 name="selecionarCategoria"
-                 {...register("selecionarCategoria", {
+                 id="categoria.codCategoria" 
+                 name="categoria.codCategoria"
+                 {...register("categoria.codCategoria", {
                   required: 'Preenchimento Obrigatório',
-                  minLength: {
-                    value: 2,
-                    message: 'No minimo dois caracteres' 
-                  }
                 })}
            >
+             <option hidden disabled selected value> Selecione uma categoria </option>
              <Listar_categoria />
            </select>
         
-           <ErrorMessage errors={errors} name="nomeCategoria">
+           <ErrorMessage errors={errors} name="categoria.codCategoria">
              {({ messages }) => messages && Object.entries(messages).map(([type, message]) => ( <p key={type}>{message}</p>))}
            </ErrorMessage>
 
@@ -56,12 +53,12 @@ export default function Cadastro_subcategoria() {
         <div className="subCategoria_linha">
         <div className="subCategoria_campo">
 
-          <label htmlFor="nomeSubcategoria"> Nome da Subcategoria </label>
+          <label htmlFor="nomeSubCategoria"> Nome da Subcategoria </label>
           <input 
                  type="text" 
-                 id="nomeSubcategoria" 
-                 name="nomeSubcategoria"
-                 {...register("nomeSubcategoria", {
+                 id="nomeSubCategoria" 
+                 name="nomeSubCategoria"
+                 {...register("nomeSubCategoria", {
                   required: 'Preenchimento Obrigatório',
                   minLength: {
                     value: 2,
@@ -70,7 +67,7 @@ export default function Cadastro_subcategoria() {
                 })}
           />
         
-           <ErrorMessage errors={errors} name="nomeSubcategoria">
+           <ErrorMessage errors={errors} name="nomeSubCategoria">
              {({ messages }) => messages && Object.entries(messages).map(([type, message]) => ( <p key={type}>{message}</p>))}
            </ErrorMessage>
 
