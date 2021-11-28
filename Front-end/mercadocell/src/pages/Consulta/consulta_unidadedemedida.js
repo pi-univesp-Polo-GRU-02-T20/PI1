@@ -3,10 +3,11 @@ import MaterialTable from "material-table";
 import React, { useEffect, useState } from "react";
 import './consulta.css';
 import axios from "axios";
+import  api  from '../../components/Services/api';
 
 export default function Consulta_UnidadeMedida() {
 
-    var url = "http://localhost:8080/unidadeMedida/"
+    var url = "/unidadeMedida"
 
     const [entries, setEntries] = useState({
         data: [
@@ -27,8 +28,8 @@ export default function Consulta_UnidadeMedida() {
     });
 
     useEffect(() => {
-        axios
-        .get("http://localhost:8080/unidadeMedida")
+        api
+        .get(url)
         .then(response => {
         let data = [];
     response.data.forEach(el => {
@@ -61,8 +62,8 @@ export default function Consulta_UnidadeMedida() {
             resolve();
             const data = [...entries.data];
             data[data.indexOf(oldData)] = newData;
-            axios
-                .put("http://localhost:8080/unidadeMedida", newData, {
+            api
+                .put(url, newData, {
                     params: {
                         codUnidadeMedida: entries.data[0].codUnidadeMedida
                     }
@@ -77,8 +78,8 @@ export default function Consulta_UnidadeMedida() {
             resolve();
             const data = [...entries.data];
             data.splice(data.indexOf(oldData), 1);
-            axios
-            .delete(url + oldData.codUnidadeMedida)
+            api
+            .delete(url + "/" + oldData.codUnidadeMedida)
                 .then(res => console.log(res.data));
             setEntries({ ...entries, data });
         }, 600);
