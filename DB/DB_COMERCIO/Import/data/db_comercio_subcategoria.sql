@@ -1,0 +1,37 @@
+-- MySQL dump 10.13  Distrib 8.0.26, for Win64 (x86_64)
+--
+-- Host: 127.0.0.1    Database: db_comercio
+-- ------------------------------------------------------
+-- Server version	8.0.26
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!50503 SET NAMES utf8 */;
+/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
+/*!40103 SET TIME_ZONE='+00:00' */;
+/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+
+--
+-- Dumping data for table `subcategoria`
+--
+
+LOCK TABLES `subcategoria` WRITE;
+/*!40000 ALTER TABLE `subcategoria` DISABLE KEYS */;
+INSERT INTO `subcategoria` VALUES (1,'Carinho',1),(2,'Boneca',1),(3,'Receptor wifi',3),(4,'Case para celular',2),(5,'Case para notebook',2),(6,'Mouse',3),(7,'Teclado',3),(8,'Receptor Wireless',3),(9,'TENIS',NULL),(10,'TENIS',NULL),(11,'TENIS',NULL),(12,'CADERNO',3),(13,'Régua',5),(14,'Lápis',5),(15,'Caneta',5),(16,'Estojo',5),(17,'Guarda-chuva',8),(18,'Fralda',7),(19,'Mamadeira',7),(20,'Suporte Notebook',6),(21,'Grampeador',6),(23,'TENIS',NULL);
+/*!40000 ALTER TABLE `subcategoria` ENABLE KEYS */;
+UNLOCK TABLES;
+/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
+
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+
+-- Dump completed on 2021-11-05  2:06:17
